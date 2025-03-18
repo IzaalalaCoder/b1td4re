@@ -12,7 +12,7 @@ class Game(commands.Cog):
         """Add new members in list of members"""
         member = member or ctx.author
         guild = ctx.message.guild.id
-        index = self.index_of_member(member)
+        index = self._index_of_member(member)
         if index == -1 and member != None:
             self._members.append(Member(member))
             self._members[-1].set_is_play(True, guild)
@@ -26,7 +26,7 @@ class Game(commands.Cog):
         """Remove members of the game"""
         member = member or ctx.author
         guild = ctx.message.guild.id
-        index = self.index_of_member(member)
+        index = self._index_of_member(member)
         if index != -1 and member != None:
             m = self._members[index]
             if m.contain_guild(guild):
@@ -41,13 +41,12 @@ class Game(commands.Cog):
         """Remove members of the game"""
         member = member or ctx.author
         guild = ctx.message.guild.id
-        index = self.index_of_member(member)
+        index = self._index_of_member(member)
         if index != -1 and member != None:
             m = self._members[index]
             if m.contain_guild(guild):
-                if m.get_is_play(guild):
-                    self._members.pop(index)
-                    await ctx.send(f'{member.name} ne fait maintenant plus parti des joueurs dans {ctx.message.guild.name}')
+                self._members.pop(index)
+                await ctx.send(f'{member.name} ne fait maintenant plus parti des joueurs dans {ctx.message.guild.name}')
             else:
                 await ctx.send(f'{member.name} n\'a jamais joué dans {ctx.message.guild.name}')
 
@@ -55,7 +54,7 @@ class Game(commands.Cog):
     async def rank(self, ctx):
         """Display rank"""
         guild = ctx.message.guild.id
-        members = self.members_by_guild(guild)
+        members = self._members_by_guild(guild)
         if len(members) == 0:
             await ctx.send(f"Aucun membre dans le classement dans {ctx.message.guild.name}")
             return
@@ -66,13 +65,13 @@ class Game(commands.Cog):
             text += f"{m.get_member().name} - {m.get_points()} - {playing} \n"
         await ctx.send(text)
 
-    def index_of_member(self, member: discord.Member):
+    def _index_of_member(self, member: discord.Member):
         for m in self._members:
             if member == m.get_member():
                 return self._members.index(m)
         return -1
 
-    def members_by_guild(self, guild):
+    def _members_by_guild(self, guild):
         members = []
         for m in self._members:
             if m.contain_guild(guild):
