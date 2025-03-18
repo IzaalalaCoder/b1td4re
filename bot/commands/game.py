@@ -56,13 +56,29 @@ class Game(commands.Cog):
         guild = ctx.message.guild.id
         members = self._members_by_guild(guild)
         if len(members) == 0:
-            await ctx.send(f"Aucun membre dans le classement dans {ctx.message.guild.name}")
+            await ctx.send(f"Aucun membres dans le classement dans {ctx.message.guild.name}")
             return
         members = sorted(members, key=lambda m: m.get_points(), reverse=True)
         text = ""
         for m in members:
             playing = "Participe" if m.get_is_play(guild) else "Ne participe plus"
             text += f"{m.get_member().name} - {m.get_points()} - {playing} \n"
+        await ctx.send(text)
+
+    @commands.command()
+    async def players(self, ctx):
+        """Display the list of players who are participating"""
+        guild = ctx.message.guild.id
+        members = self._members_by_guild(guild)
+        if len(members) == 0:
+            await ctx.send(f"Aucun membres dans le classement dans {ctx.message.guild.name}")
+            return
+        text = ""
+        for m in members:
+            if m.get_is_play(guild):
+                text += f"{m.get_member().name}\n"
+        if text == "":
+            text = "Aucun membres ne jouent pour le moment"
         await ctx.send(text)
 
     def _index_of_member(self, member: discord.Member):
