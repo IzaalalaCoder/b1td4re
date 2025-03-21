@@ -1,0 +1,31 @@
+<challenges>
+    <challenge jour="21" nombre="1">
+        <titre>Le Jardin de Pâques</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>
+            Dans un jardin, vous devez planter des œufs (représentés par des valeurs dans une grille). Chaque œuf peut être planté ou non (1 ou 0). Vous devez trouver la plus grande région de 1 (œufs plantés) connectée horizontalement ou verticalement.
+        </explication>
+        <description>
+
+        </description>
+        <objectifs>
+            <objectif>Implémenter un algorithme pour parcourir la grille et trouver la région connectée la plus grande</objectif>
+            <objectif>Utiliser une approche de recherche en profondeur DFS ou de recherche en largeur BFS</objectif>
+        </objectifs>
+        <fonctionnement>
+            Il s'agit d'un exercice mental
+        </fonctionnement>
+        <criteres_succes>
+
+        </criteres_succes>
+        <exemple_de_deroulement>
+            garden = [
+                [1, 1, 0, 0, 1],
+                [1, 1, 0, 1, 0],
+                [0, 0, 1, 0, 1],
+                [1, 1, 0, 1, 1]
+            ]
+            sortie attendue = La plus grande région d’œufs plantés a une taille de 4
+        </exemple_de_deroulement>
+    </challenge>
+</challenges>
