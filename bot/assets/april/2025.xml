@@ -1,0 +1,41 @@
+<challenges>
+    <challenge jour="1" nombre="1">
+        <titre>Démineur Poisson</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>
+            Crée un jeu de Démineur sur le thème des poissons ! Dans ce jeu, les mines sont remplacées par des poissons, et les cases doivent être ouvertes pour éviter de tomber sur un poisson caché. L’objectif est de trouver toutes les cases sans poissons tout en évitant les poissons cachés dans le tableau.
+        </explication>
+        <description>
+            Le jeu ressemble au Démineur classique : un tableau de cases à ouvrir, avec des poissons cachés et un compteur de poissons autour de chaque case.
+            Les poissons sont cachés sous les cases et le joueur doit éviter d’ouvrir une case contenant un poisson pour ne pas perdre la partie. Lorsque le joueur ouvre une case, le jeu révèle soit un poisson, soit le nombre de poissons voisins dans les cases adjacentes.
+            Le but est de faire en sorte que le joueur ouvre toutes les cases vides sans tomber sur un poisson.
+        </description>
+        <objectifs>
+            <objectif>Créer un champ de jeu de Démineur classique avec des cases à ouvrir et des poissons cachés à éviter.</objectif>
+            <objectif>Repenser les mines : elles sont remplacées par des poissons, mais la mécanique du jeu reste similaire à celle du Démineur classique.</objectif>
+            <objectif>Afficher le nombre de poissons adjacents à chaque case pour aider le joueur à prendre des décisions.</objectif>
+            <objectif>Permettre au joueur de marquer les cases où il pense qu'il y a des poissons.</objectif>
+        </objectifs>
+        <fonctionnement>
+            Le jeu est basé sur les règles du Démineur traditionnel. Chaque case peut contenir un poisson ou être vide. Lorsque le joueur ouvre une case, il découvre soit un poisson, soit un nombre qui indique le nombre de poissons dans les cases adjacentes. Le joueur doit éviter de cliquer sur une case avec un poisson et essayer de dévoiler toutes les cases sans poissons.
+        </fonctionnement>
+        <criteres_succes>
+            <critere>Le jeu doit permettre au joueur de découvrir toutes les cases sans toucher de poisson pour gagner.</critere>
+            <critere>Le joueur doit être capable de marquer les cases où il pense qu'il y a des poissons pour éviter des erreurs.</critere>
+            <critere>Le nombre de poissons adjacents doit être clairement affiché pour aider le joueur à éviter les pièges.</critere>
+            <critere>Le jeu doit être amusant et captivant tout en suivant la mécanique du Démineur classique.</critere>
+        </criteres_succes>
+        <exemple_de_deroulement>
+            Le joueur commence avec un champ de jeu vide et doit cliquer sur une case.
+            - Entrée : Le joueur clique sur une case.
+            - Si la case est vide, elle révèle un nombre indiquant combien de poissons se trouvent dans les cases adjacentes.
+            - Si la case contient un poisson, le jeu se termine.
+            - Le joueur doit continuer à ouvrir les cases tout en utilisant les informations sur les poissons adjacents pour éviter les poissons cachés et gagner.
+        </exemple_de_deroulement>
+        <extensions_facultatives>
+            <extension>Ajouter des niveaux de difficulté avec des tailles de tableau différentes et plus ou moins de poissons cachés.</extension>
+            <extension>Ajouter un timer pour rendre le jeu plus compétitif et ajouter de la pression temporelle.</extension>
+            <extension>Ajouter un mode multijoueur où les joueurs peuvent partager un tableau et tenter de s'éviter les poissons ensemble.</extension>
+        </extensions_facultatives>
+    </challenge>
+</challenges>

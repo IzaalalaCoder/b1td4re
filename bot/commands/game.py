@@ -7,12 +7,15 @@ class Game(commands.Cog):
         self.bot = bot
         self._members = []
 
+    def get_all_members(self):
+        return self._members
+
     @commands.command()
     async def add(self, ctx, *, member: discord.Member = None):
         """Add new members in list of members"""
         member = member or ctx.author
         guild = ctx.message.guild.id
-        index = self._index_of_member(member)
+        index = self.index_of_member(member)
         if index == -1 and member != None:
             self._members.append(Member(member))
             self._members[-1].set_is_play(True, guild)
@@ -26,7 +29,7 @@ class Game(commands.Cog):
         """Remove members of the game"""
         member = member or ctx.author
         guild = ctx.message.guild.id
-        index = self._index_of_member(member)
+        index = self.index_of_member(member)
         if index != -1 and member != None:
             m = self._members[index]
             if m.contain_guild(guild):
@@ -41,7 +44,7 @@ class Game(commands.Cog):
         """Remove members of the game"""
         member = member or ctx.author
         guild = ctx.message.guild.id
-        index = self._index_of_member(member)
+        index = self.index_of_member(member)
         if index != -1 and member != None:
             m = self._members[index]
             if m.contain_guild(guild):
@@ -81,7 +84,7 @@ class Game(commands.Cog):
             text = "Aucun membres ne jouent pour le moment"
         await ctx.send(text)
 
-    def _index_of_member(self, member: discord.Member):
+    def index_of_member(self, member: discord.Member):
         for m in self._members:
             if member == m.get_member():
                 return self._members.index(m)
