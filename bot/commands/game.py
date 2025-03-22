@@ -10,6 +10,15 @@ class Game(commands.Cog):
     def get_all_members(self):
         return self._members
 
+    def search_member(self, name):
+        pass
+
+    def index_of_member(self, member: discord.Member):
+        for m in self._members:
+            if member == m.get_member():
+                return self._members.index(m)
+        return -1
+
     @commands.command()
     async def add(self, ctx, *, member: discord.Member = None):
         """Add new members in list of members"""
@@ -83,12 +92,6 @@ class Game(commands.Cog):
         if text == "":
             text = "Aucun membres ne jouent pour le moment"
         await ctx.send(text)
-
-    def index_of_member(self, member: discord.Member):
-        for m in self._members:
-            if member == m.get_member():
-                return self._members.index(m)
-        return -1
 
     def _members_by_guild(self, guild):
         members = []
