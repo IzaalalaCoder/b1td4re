@@ -9,7 +9,7 @@ class Challenges(commands.Cog):
         self._game = game
         self._challenge = Challenge()
 
-    def is_numeric(self, index):
+    def _is_numeric(self, index):
         is_numeric = True
         for c in index:
             if not 47 < ord(c) < 58:
@@ -26,7 +26,7 @@ class Challenges(commands.Cog):
 
     @commands.command()
     async def challenge(self, ctx, *index, member: discord.Member = None):
-        if len(index) != 1 or not self.is_numeric(index[0]):
+        if len(index) != 1 or not self._is_numeric(index[0]):
             await ctx.send("Aucun challenge n'a été spécifié")
             return
         guild = ctx.message.guild.id
