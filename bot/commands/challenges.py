@@ -32,3 +32,24 @@ class Challenges(commands.Cog):
         guild = ctx.message.guild.id
         if self._game.get_all_members()[self._game.index_of_member(member)].get_is_play(guild):
             await ctx.send(f'{self._challenge.get_one_challenge_on_day(int(index[0]))}')
+
+    @commands.command()
+    async def publish(self, ctx, *arg, member: discord.Member = None):
+        if len(arg) != 2 or not self._is_numeric(arg[0]) or :
+            await ctx.send("Aucun challenge n'a été spécifié")
+            return
+        guild = ctx.message.guild.id
+        if self._game.get_all_members()[self._game.index_of_member(member)].get_is_play(guild):
+            await ctx.send(f'{self._challenge.get_one_challenge_on_day(int(index[0]))}')
+
+    @commands.command()
+    async def vote(self, ctx, *arg, member: discord.Member = None):
+        if len(arg) != 2 or self._is_numeric(arg[0]) or not self._is_numeric(arg[1]):
+            await ctx.send("Aucun membre ou aucune note n'a été spécifié")
+            return
+        guild = ctx.message.guild.id
+        m = self._game.search_member(arg[0])
+        if self._game.get_all_members()[self._game.index_of_member(m)].get_is_play(guild):
+            m.add_points(int(arg[1]))
+            await ctx.send(f'{self._challenge.get_one_challenge_on_day(int(arg[0]))}')
+
