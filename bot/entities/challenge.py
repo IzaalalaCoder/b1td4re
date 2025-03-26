@@ -9,20 +9,30 @@ class Challenge():
         return ET.parse(f'bot/assets/{month}/{year}.xml')
 
     def _read_challenge(self, challenge):
-        titre = challenge.find("titre").text
-        explication = challenge.find("explication").text
-        description = challenge.find("description").text
-        text = f"Titre: {titre}\nExplication: {explication}\nDescription: {description} \nCritères de succès:"
-        for critere in challenge.findall(".//criteres_succes/critere"):
-            text += f"\n- {critere.text}"
-        return text
+        informations_challenge = {}
+        informations_challenge["titre"] = challenge.find("titre").text
+        informations_challenge["explication"] = challenge.find("explication").text
+        informations_challenge["description"] = challenge.find("description").text
+
+        if challenge.find("exemple_de_deroulement") is not None:
+            informations_challenge["exemples"] = challenge.find("exemple_de_deroulement").text
+
+        if challenge.find("criteres_succes") is not None:
+            informations_challenge["criteres"] = ""
+            for critere in challenge.findall(".//criteres_succes/critere"):
+                informations_challenge["criteres"] += f"\n- {critere.text}"
+
+        return informations_challenge
 
     def get_all_challenges_on_day(self):
         root = self._get_correct_file_on_today().getroot()
         day = d.date.today().day
-        challenge = root.find(f".//challenge[@jour='{day}']")
-        if challenge is not None:
-            return self._read_challenge(challenge)
+        challenges_str = []
+        challenges = root.findall(f".//challenge[@jour='{day}']")
+        if challenges:
+            for c in challenges:
+                challenges_str.append(self._read_challenge(c))
+            return challenges_str
         else:
             return "Le challenge pour le jour spécifié n'a pas été trouvé."
 
