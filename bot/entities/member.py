@@ -5,6 +5,7 @@ class Member():
         self._member = member
         self._points = 0
         self._guilds_play = {}
+        self._calendar_playing = []
 
     def contain_guild(self, guild):
         return guild in self._guilds_play
@@ -23,3 +24,7 @@ class Member():
 
     def add_points(self, points : int):
         self._points += 10
+
+    def add_participate(self):
+        self._calendar_playing.add(d.date.today())
+        pass
