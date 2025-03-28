@@ -75,8 +75,18 @@ class Challenges(commands.Cog):
             color = self._get_random_color()
         )
         e.add_field(name="Explications", value=informations["explication"])
+        e.add_field(name="Fonctionnement", value=informations["fonctionnement"])
+        e.add_field(name="Temps d'exécution", value=informations["temps_execution"])
+        if "objectifs" in informations:
+            e.add_field(name="La liste des objectifs", value=informations["objectifs"])
         if "criteres" in informations:
             e.add_field(name="Critères de réussites", value=informations["criteres"])
         if "exemple_de_deroulement" in informations:
             e.add_field(name="Exemples de réalisations", value=informations["exemple_de_deroulement"])
+        if "extensions_facultatives" in informations:
+            e.add_field(name="Extensions facultatives", value=informations["extensions_facultatives"])
+        if "instructions" in informations:
+            e.add_field(name="Les instructions", value=informations["instructions"])
+        if "output" in informations:
+            e.add_field(name="Sortie", value=informations["output"])
         return e

@@ -11,16 +11,41 @@ class Challenge():
     def _read_challenge(self, challenge):
         informations_challenge = {}
         informations_challenge["titre"] = challenge.find("titre").text
+        informations_challenge["temps_execution"] = challenge.find("temps_execution").text
         informations_challenge["explication"] = challenge.find("explication").text
         informations_challenge["description"] = challenge.find("description").text
+        informations_challenge["fonctionnement"] = challenge.find("fonctionnement").text
 
         if challenge.find("exemple_de_deroulement") is not None:
             informations_challenge["exemples"] = challenge.find("exemple_de_deroulement").text
+
+        if challenge.find("objectifs") is not None:
+            informations_challenge["objectifs"] = ""
+            for obj in challenge.findall(".//objectifs/objectif"):
+                informations_challenge["objectifs"] += f"\n- {obj.text}"
 
         if challenge.find("criteres_succes") is not None:
             informations_challenge["criteres"] = ""
             for critere in challenge.findall(".//criteres_succes/critere"):
                 informations_challenge["criteres"] += f"\n- {critere.text}"
+
+        if challenge.find("extensions_facultatives") is not None:
+            informations_challenge["extensions_facultatives"] = ""
+            for ext in challenge.findall(".//extensions_facultatives/extension"):
+                informations_challenge["extensions_facultatives"] += f"\n- {ext.text}"
+
+        if challenge.find("exemple_de_deroulement") is not None:
+            informations_challenge["exemple_de_deroulement"] = ""
+            for exemples in challenge.findall(".//exemple_de_deroulement/deroulement"):
+                informations_challenge["exemple_de_deroulement"] += f"\n- {exemples.text}"
+
+        if challenge.find("instructions") is not None:
+            informations_challenge["instructions"] = ""
+            for instruction in challenge.findall(".//instructions/instruction"):
+                informations_challenge["instructions"] += f"- {instruction.text}\n"
+
+        if challenge.find("output") is not None:
+            informations_challenge["output"] = challenge.find("output").text
 
         return informations_challenge
 
