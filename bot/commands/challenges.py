@@ -26,8 +26,15 @@ class Challenges(commands.Cog):
         """Add new members in list of members"""
         guild = ctx.message.guild.id
         if self._game.get_all_members()[self._game.index_of_member(member)].get_is_play(guild):
-            for c in self._challenge.get_all_challenges_on_day():
-                await ctx.send(embed = self._generate_embed_to_display_informations_challenge(c))
+            challenges = self._challenge.get_all_challenges_on_day() # Récupère la liste des défis
+            if challenges:
+                for c in challenges:
+                    await ctx.send(embed=self._generate_embed_to_display_informations_challenge(c))
+            else:
+                await ctx.send(embed=self._generate_error_embed(
+                    title="Pas de défi aujourd'hui 😔",
+                    description="Malheureusement, il n'y a pas de défi disponible pour le moment.\nRevenez demain pour de nouvelles aventures coding !"
+                ))
 
     @commands.command()
     async def challenge(self, ctx, *index, member: discord.Member = None):
@@ -37,7 +44,13 @@ class Challenges(commands.Cog):
         guild = ctx.message.guild.id
         if self._game.get_all_members()[self._game.index_of_member(member)].get_is_play(guild):
             challenge = self._challenge.get_one_challenge_on_day(int(index[0]))
-            await ctx.send(embed = self._generate_embed_to_display_informations_challenge(challenge))
+            if challenge:
+                await ctx.send(embed=self._generate_embed_to_display_informations_challenge(challenge))
+            else:
+                await ctx.send(embed=self._generate_error_embed(
+                    title="Défi introuvable 😕",
+                    description=f"Le défi avec l'index {index[0]} n'a pas été trouvé pour aujourd'hui."
+                ))
 
     @commands.command()
     async def publish(self, ctx, *arg, member: discord.Member = None):
@@ -60,6 +73,14 @@ class Challenges(commands.Cog):
         if self._game.get_all_members()[self._game.index_of_member(m)].get_is_play(guild):
             m.add_points(int(arg[1]))
             await ctx.send(f'{self._challenge.get_one_challenge_on_day(int(arg[0]))}')
+
+    def _generate_error_embed(self, title="Erreur", description="Une erreur s'est produite."):
+        embed = discord.Embed(
+            title=title,
+            description=description,
+            color=discord.Color.red()
+        )
+        return embed
 
     def _get_random_color(self):
         r = random.randint(0, 255)
