@@ -1,0 +1,908 @@
+<challenges>
+    <challenge jour="13" nombre="1">
+        <titre>Démineur Poisson</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un jeu de Démineur sur le thème des poissons ! Dans ce jeu, les mines sont remplacées par des poissons, et les cases doivent être ouvertes pour éviter de tomber sur un poisson caché. L’objectif est de trouver toutes les cases sans poissons tout en évitant les poissons cachés dans le tableau.</explication>
+        <description>Le jeu ressemble au Démineur classique : un tableau de cases à ouvrir, avec des poissons cachés et un compteur de poissons autour de chaque case. Les poissons sont cachés sous les cases et le joueur doit éviter d’ouvrir une case contenant un poisson pour ne pas perdre la partie. Lorsque le joueur ouvre une case, le jeu révèle soit un poisson, soit le nombre de poissons voisins dans les cases adjacentes. Le but est de faire en sorte que le joueur ouvre toutes les cases vides sans tomber sur un poisson.</description>
+        <objectifs>
+            <objectif>Créer un champ de jeu de Démineur classique avec des cases à ouvrir et des poissons cachés à éviter.</objectif>
+            <objectif>Repenser les mines : elles sont remplacées par des poissons, mais la mécanique du jeu reste similaire à celle du Démineur classique.</objectif>
+            <objectif>Afficher le nombre de poissons adjacents à chaque case pour aider le joueur à prendre des décisions.</objectif>
+            <objectif>Permettre au joueur de marquer les cases où il pense qu'il y a des poissons.</objectif>
+        </objectifs>
+        <fonctionnement>Le jeu est basé sur les règles du Démineur traditionnel. Chaque case peut contenir un poisson ou être vide. Lorsque le joueur ouvre une case, il découvre soit un poisson, soit un nombre qui indique le nombre de poissons dans les cases adjacentes. Le joueur doit éviter de cliquer sur une case avec un poisson et essayer de dévoiler toutes les cases sans poissons.</fonctionnement>
+        <criteres_succes>
+            <critere>Le jeu doit permettre au joueur de découvrir toutes les cases sans toucher de poisson pour gagner.</critere>
+            <critere>Le joueur doit être capable de marquer les cases où il pense qu'il y a des poissons pour éviter des erreurs.</critere>
+            <critere>Le nombre de poissons adjacents doit être clairement affiché pour aider le joueur à éviter les pièges.</critere>
+            <critere>Le jeu doit être amusant et captivant tout en suivant la mécanique du Démineur classique.</critere>
+        </criteres_succes>
+        <exemple_de_deroulement>Le joueur commence avec un champ de jeu vide et doit cliquer sur une case.
+            <deroulement>Le joueur clique sur une case.</deroulement>
+            <deroulement>Si la case est vide, elle révèle un nombre indiquant combien de poissons se trouvent dans les cases adjacentes.</deroulement>
+            <deroulement>Si la case contient un poisson, le jeu se termine.</deroulement>
+            <deroulement>Le joueur doit continuer à ouvrir les cases tout en utilisant les informations sur les poissons adjacents pour éviter les poissons cachés et gagner.</deroulement>
+        </exemple_de_deroulement>
+        <extensions_facultatives>
+            <extension>Ajouter des niveaux de difficulté avec des tailles de tableau différentes et plus ou moins de poissons cachés.</extension>
+            <extension>Ajouter un timer pour rendre le jeu plus compétitif et ajouter de la pression temporelle.</extension>
+            <extension>Ajouter un mode multijoueur où les joueurs peuvent partager un tableau et tenter de s'éviter les poissons ensemble.</extension>
+        </extensions_facultatives>
+        <exemple_entree_sortie>
+            <inputs>
+                <input>Taille de la grille : 5x5</input>
+                <input>5 poissons dans la grille</input>
+                <input>La case 2, 3 est cliqué par l'utilisateur</input>
+            </inputs>
+        </exemple_entree_sortie>
+    </challenge>
+
+
+    <challenge jour="14" nombre="1">
+        <titre>Dessinons un poisson d'avril</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un programme qui dessine un poisson d'avril stylisé dans la console en utilisant des caractères ASCII. L'utilisateur pourra personnaliser certains aspects du poisson (taille, motif, etc.).</explication>
+        <description>Le programme génère une représentation ASCII d'un poisson. Le corps, la queue et les nageoires du poisson sont formés de caractères. Le programme doit permettre de configurer la taille du poisson et le motif utilisé pour le dessiner.</description>
+        <objectifs>
+            <objectif>Définir des fonctions pour dessiner les différentes parties du poisson (corps, queue, nageoires) en ASCII.</objectif>
+            <objectif>Permettre à l'utilisateur de choisir la taille du poisson.</objectif>
+            <objectif>Permettre à l'utilisateur de choisir le motif de remplissage du poisson.</objectif>
+            <objectif>Assembler les différentes parties pour former un poisson complet et l'afficher dans la console.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme demande à l'utilisateur de spécifier la taille du poisson et le motif de remplissage. Il utilise ensuite des fonctions pour générer les chaînes de caractères représentant les différentes parties du poisson et les concatène pour former le dessin final. Le dessin est ensuite affiché dans la console.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme doit dessiner un poisson d'avril reconnaissable en ASCII.</critere>
+            <critere>Le programme doit permettre de personnaliser la taille et le motif du poisson.</critere>
+            <critere>Le dessin doit être clair et lisible dans la console.</critere>
+        </criteres_succes>
+        <exemple_de_deroulement>
+            <deroulement>L'utilisateur choisit la taille 10 et le motif "*".</deroulement>
+            <deroulement>Le programme génère le dessin ASCII du poisson.</deroulement>
+        </exemple_de_deroulement>
+        <extensions_facultatives>
+            <extension>Ajouter des options de personnalisation (couleur, animation).</extension>
+            <extension>Permettre à l'utilisateur de sauvegarder le dessin dans un fichier texte.</extension>
+            <extension>Ajouter des variations de poissons (différentes formes).</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="16" nombre="1">
+        <titre>L'herbier du collectionneur</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un programme qui simule la collection d'un botaniste excentrique qui ne s'intéresse qu'aux fleurs rares du mois d'avril. Le programme devra l'aider à cataloguer ses trouvailles et à identifier les doublons.</explication>
+        <description>Le programme permet de gérer une collection de fleurs. Chaque fleur est caractérisée par son nom, sa date de découverte et sa rareté (un nombre de 1 à 5, 5 étant le plus rare). Le programme permet d'ajouter de nouvelles fleurs à la collection, d'afficher la liste des fleurs, de rechercher une fleur par son nom et de détecter les doublons (fleurs avec le même nom et la même date de découverte).</description>
+        <objectifs>
+            <objectif>Définir une structure de données pour représenter une fleur (nom, date de découverte, rareté).</objectif>
+            <objectif>Permettre à l'utilisateur d'ajouter de nouvelles fleurs à la collection.</objectif>
+            <objectif>Afficher la liste de toutes les fleurs de la collection.</objectif>
+            <objectif>Rechercher une fleur dans la collection par son nom.</objectif>
+            <objectif>Détecter les doublons dans la collection.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme utilise une liste (ou un dictionnaire) pour stocker les fleurs. Il propose un menu à l'utilisateur pour ajouter une fleur, afficher la liste, rechercher une fleur ou détecter les doublons. Chaque option du menu appelle une fonction différente pour effectuer l'opération correspondante.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme doit permettre d'ajouter de nouvelles fleurs à la collection.</critere>
+            <critere>Le programme doit afficher correctement la liste des fleurs.</critere>
+            <critere>Le programme doit trouver une fleur dans la collection par son nom.</critere>
+            <critere>Le programme doit détecter les doublons dans la collection.</critere>
+        </criteres_succes>
+        <exemple_de_deroulement>
+            <deroulement>Le programme affiche le menu : 1. Ajouter une fleur, 2. Afficher la liste, 3. Rechercher une fleur, 4. Détecter les doublons, 5. Quitter.</deroulement>
+            <deroulement>L'utilisateur choisit 1 et entre les informations de la fleur : "Tulipe", "01/04/2024", 3.</deroulement>
+            <deroulement>L'utilisateur choisit 2 et le programme affiche la liste des fleurs.</deroulement>
+            <deroulement>L'utilisateur choisit 3 et entre le nom de la fleur à rechercher : "Tulipe".</deroulement>
+            <deroulement>Le programme affiche les informations de la tulipe.</deroulement>
+            <deroulement>L'utilisateur choisit 4 et le programme affiche les doublons (s'il y en a).</deroulement>
+        </exemple_de_deroulement>
+        <extensions_facultatives>
+            <extension>Ajouter une option pour modifier les informations d'une fleur existante.</extension>
+            <extension>Ajouter une option pour supprimer une fleur de la collection.</extension>
+            <extension>Ajouter une option pour trier la collection par nom, date ou rareté.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="15" nombre="1">
+        <titre>Le générateur de CV... de poissons d'avril !</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un programme qui génère des CV humoristiques et absurdes pour des métiers imaginaires ou des situations professionnelles loufoques. Le programme devra mettre en avant des compétences et des expériences totalement farfelues.</explication>
+        <description>Le programme génère un CV complet avec différentes sections (informations personnelles, expérience professionnelle, formation, compétences, etc.). Le contenu de chaque section est absurde et humoristique, mettant en scène des métiers inventés et des compétences extravagantes. L'utilisateur peut générer un CV à la demande.</description>
+        <objectifs>
+            <objectif>Définir une structure de données pour représenter les différentes sections du CV.</objectif>
+            <objectif>Générer un CV humoristique et absurde avec du contenu inventé.</objectif>
+            <objectif>Afficher le CV à l'utilisateur.</objectif>
+            <objectif>Permettre à l'utilisateur de générer plusieurs CV.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme contient des listes de phrases et de mots-clés associés à différents métiers et compétences imaginaires. Il sélectionne et combine ces éléments de manière aléatoire pour former le contenu des différentes sections du CV. Il peut utiliser des modèles de CV existants pour structurer le document.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme doit générer un CV complet avec toutes les sections habituelles.</critere>
+            <critere>Le contenu du CV doit être humoristique et absurde.</critere>
+            <critere>Le programme doit être facile à utiliser.</critere>
+        </criteres_succes>
+        <exemple_de_deroulement>
+            <deroulement>L'utilisateur exécute le programme.</deroulement>
+            <deroulement>Le programme génère un CV pour le poste de "Dompteur de licornes intergalactiques".</deroulement>
+            <deroulement>Le programme affiche le CV, avec des sections comme "Expérience : 5 ans d'expérience dans le dressage de licornes sauvages sur la planète Xylos", "Compétences : Maîtrise du lasso laser, communication télépathique avec les créatures mythiques, immunité aux arcs-en-ciel".</deroulement>
+            <deroulement>L'utilisateur peut choisir de générer un autre CV.</deroulement>
+        </exemple_de_deroulement>
+        <extensions_facultatives>
+            <extension>Ajouter des options de personnalisation (style d'humour, niveau d'absurdité).</extension>
+            <extension>Permettre à l'utilisateur de choisir le métier ou le secteur d'activité du CV.</extension>
+            <extension>Intégrer des modèles de CV réels pour les parodier.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="17" nombre="1">
+        <titre>Autoportrait "poisson d'avril" en ASCII</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Réalisez un autoportrait humoristique en vous transformant en poisson d'avril en ASCII. Exagérez vos traits et ajoutez des éléments aquatiques amusants pour créer un personnage original et décalé.</explication>
+        <description>Le programme génère un autoportrait humoristique en ASCII, transformant l'utilisateur en poisson d'avril.</description>
+        <objectifs>
+            <objectif>Utiliser des caractères ASCII pour dessiner un autoportrait.</objectif>
+            <objectif>Transformer l'autoportrait en poisson d'avril.</objectif>
+            <objectif>Créer un autoportrait humoristique.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme utilise des caractères ASCII pour représenter les traits du visage et les éléments aquatiques.</fonctionnement>
+        <criteres_succes>
+            <critere>L'autoportrait ressemble à une personne.</critere>
+            <critere>L'autoportrait est transformé en poisson d'avril.</critere>
+            <critere>L'autoportrait est humoristique.</critere>
+        </criteres_succes>
+        <exemple_de_deroulement>
+            <deroulement>L'utilisateur exécute le programme.</deroulement>
+            <deroulement>Le programme affiche un autoportrait en ASCII.</deroulement>
+            <deroulement>L'utilisateur peut choisir de générer un autre autoportrait.</deroulement>
+        </exemple_de_deroulement>
+        <extensions_facultatives>
+            <extension>Permettre à l'utilisateur de personnaliser l'autoportrait.</extension>
+            <extension>Ajouter des animations à l'autoportrait.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="18" nombre="1">
+        <titre>Emoji Translate</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un programme qui prend une phrase en entrée et remplace chaque lettre de l'alphabet (en majuscule et minuscule) par un emoji spécifique. Les espaces et la ponctuation doivent rester inchangés !</explication>
+        <description>Crée un programme qui prend une phrase et la transforme en une séquence d'emojis, chaque lettre étant remplacée par un emoji.</description>
+        <objectifs>
+            <objectif>Associer chaque lettre de l'alphabet (A-Z) à un emoji unique.</objectif>
+            <objectif>Remplacer chaque lettre de la phrase par l'emoji correspondant.</objectif>
+            <objectif>Conserver les espaces et la ponctuation intacte.</objectif>
+            <objectif>Afficher la phrase modifiée, entièrement composée d'emojis.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme parcourt la phrase d'entrée caractère par caractère. Pour chaque lettre, il recherche l'emoji correspondant dans une table de correspondance et l'ajoute à la phrase de sortie. Les caractères qui ne sont pas des lettres (espaces, ponctuation) sont ajoutés à la phrase de sortie sans modification.</fonctionnement>
+        <criteres_succes>
+            <critere>Remplacer correctement chaque lettre par l'emoji correspondant.</critere>
+            <critere>Garder les espaces et la ponctuation inchangés.</critere>
+            <critere>Gérer correctement les majuscules et minuscules (si tu choisis de les traiter séparément).</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Laisser l'utilisateur personnaliser la liste d'emojis pour chaque lettre.</extension>
+            <extension>Gérer les accents (ex: 'é' ou 'à') et les remplacer par un emoji spécifique ou leur équivalent de base.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="22" nombre="1">
+        <titre>La Quête du Code Secret</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Vous devez créer un jeu où l'utilisateur doit deviner un code secret caché dans un ensemble de chiffres. Le code est composé d'un certain nombre de chiffres, et à chaque tentative, le système donne des indices sur la proximité du code secret.</explication>
+        <description>
+            Le code secret est un nombre de n chiffres, généré aléatoirement par le système.
+            L'utilisateur entre une tentative, qui est également un nombre de n chiffres.
+            Le système donne deux types d'indices :
+            "Bien placé" : Le nombre de chiffres qui sont exactement à la bonne position.
+            "Mauvais placé" : Le nombre de chiffres qui sont présents dans le code mais ne sont pas à la bonne position.
+            L'utilisateur doit essayer plusieurs fois jusqu'à trouver le code exact.
+            Le jeu se termine lorsque le code secret est trouvé.
+        </description>
+        <objectifs>
+            <objectif>Générer un code secret aléatoire de n chiffres.</objectif>
+            <objectif>Récupérer la tentative de l'utilisateur.</objectif>
+            <objectif>Calculer le nombre de chiffres "bien placés" et "mal placés".</objectif>
+            <objectif>Fournir des indices à l'utilisateur.</objectif>
+            <objectif>Répéter le processus jusqu'à ce que le code secret soit trouvé.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme génère un code secret aléatoire. Ensuite, il entre dans une boucle où il demande à l'utilisateur de saisir une tentative.  Il compare la tentative au code secret et calcule le nombre de chiffres bien placés et mal placés. Ces informations sont affichées à l'utilisateur sous forme d'indices. La boucle continue jusqu'à ce que l'utilisateur devine correctement le code secret.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme génère un code secret aléatoire valide.</critere>
+            <critere>Le programme accepte les entrées de l'utilisateur.</critere>
+            <critere>Le programme calcule correctement les chiffres bien placés et mal placés.</critere>
+            <critere>Le programme fournit des indices clairs à l'utilisateur.</critere>
+            <critere>Le programme se termine lorsque le code secret est trouvé.</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Permettre à l'utilisateur de choisir la longueur du code secret (n).</extension>
+            <extension>Ajouter une limite au nombre de tentatives.</extension>
+            <extension>Implémenter une interface utilisateur graphique.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="21" nombre="1">
+        <titre>Le Jeu des Œufs Cachés</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Imaginons un jeu où des œufs sont placés dans une grille (2D) et sont cachés derrière des obstacles. Le but est de retrouver la position des œufs en parcourant cette grille. Les œufs sont marqués par "E" et les obstacles par "X". Le joueur peut se déplacer de manière diagonale, verticale ou horizontale.</explication>
+        <description>
+            Des œufs sont placés dans une grille 2D et sont cachés derrière des obstacles. Le but est de retrouver la position des œufs en parcourant cette grille. Les œufs sont marqués par "E" et les obstacles par "X". Le joueur peut se déplacer de manière diagonale, verticale ou horizontale.
+        </description>
+        <objectifs>
+            <objectif>Implémenter un algorithme de recherche pour retrouver tous les œufs dans la grille.</objectif>
+            <objectif>Optimiser l'exploration avec une approche Breadth-First Search (BFS) ou Depth-First Search (DFS).</objectif>
+            <objectif>Retourner toutes les positions des œufs dans la grille.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme implémente un algorithme de recherche (BFS ou DFS) pour parcourir la grille 2D. Il commence à partir d'une position de départ (qui peut être donnée ou choisie arbitrairement) et explore les cellules voisines accessibles (c'est-à-dire, non des obstacles).  L'algorithme continue jusqu'à ce que toutes les cellules aient été explorées ou que toutes les positions des œufs aient été trouvées.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme trouve correctement toutes les positions des œufs dans la grille.</critere>
+            <critere>Le programme évite de passer à travers les obstacles.</critere>
+            <critere>Le programme utilise une approche de recherche BFS ou DFS valide.</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Permettre à l'utilisateur de spécifier la taille de la grille et les positions des œufs et des obstacles.</extension>
+            <extension>Visualiser la grille et le chemin parcouru par l'algorithme.</extension>
+            <extension>Implémenter différentes stratégies de recherche (par exemple, en tenant compte de la distance par rapport aux œufs).</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="19" nombre="1">
+        <titre>Sauter les obstacles de Pâques</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Ce défi consiste à créer un algorithme pour naviguer dans une grille 2D, en sautant par-dessus les obstacles pour atteindre une destination. Le but est de trouver le nombre minimum de sauts nécessaires.</explication>
+        <description>Créez un programme qui implémente un algorithme de graphe pour trouver le chemin le plus court à travers une grille 2D, en tenant compte des obstacles. Le programme doit calculer et retourner le nombre minimum de sauts nécessaires pour aller du point de départ au point d'arrivée.</description>
+        <objectifs>
+            <objectif>Utiliser un algorithme de graphes (par exemple, BFS ou Dijkstra) pour trouver la solution.</objectif>
+            <objectif>Gérer les obstacles comme des poids infinis ou des cases bloquées dans le graphe.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme implémente un algorithme de graphe, tel que BFS ou Dijkstra, pour trouver le chemin le plus court à travers une grille.  Les obstacles sont représentés comme des nœuds inaccessibles ou avec un poids infini. L'algorithme calcule le nombre minimum de sauts nécessaires pour atteindre la destination.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme trouve le nombre minimum de sauts pour atteindre la destination.</critere>
+            <critere>Le programme gère correctement les obstacles.</critere>
+            <critere>Le programme utilise un algorithme de graphe valide (BFS ou Dijkstra).</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Permettre à l'utilisateur de définir la taille de la grille, les positions de départ et d'arrivée, et les positions des obstacles.</extension>
+            <extension>Visualiser la grille et le chemin optimal.</extension>
+            <extension>Implémenter différentes règles de saut (par exemple, des sauts de longueur variable).</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="20" nombre="1">
+        <titre>Le Jardin de Pâques</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Dans un jardin, vous devez planter des œufs (représentés par des valeurs dans une grille). Chaque œuf peut être planté ou non (1 ou 0). Vous devez trouver la plus grande région de 1 (œufs plantés) connectée horizontalement ou verticalement.</explication>
+        <description>Dans un jardin représenté par une grille, retrouvez la plus grande zone d'œufs plantés (valeur 1) connectés horizontalement ou verticalement.</description>
+        <objectifs>
+            <objectif>Implémenter un algorithme pour parcourir la grille et trouver la région connectée la plus grande.</objectif>
+            <objectif>Utiliser une approche de recherche en profondeur (DFS) ou de recherche en largeur (BFS).</objectif>
+        </objectifs>
+        <fonctionnement>Le programme parcourt la grille 2D pour identifier les régions connectées de cellules ayant la valeur 1.  Il utilise un algorithme de recherche en profondeur (DFS) ou en largeur (BFS) pour explorer les cellules voisines et déterminer la taille de chaque région.  Le programme suit la taille de la plus grande région rencontrée.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme identifie correctement la plus grande région connectée.</critere>
+            <critere>Le programme gère correctement les limites de la grille.</critere>
+            <critere>Le programme utilise un algorithme de recherche valide (DFS ou BFS).</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Permettre à l'utilisateur de définir la taille de la grille et les positions des œufs plantés.</extension>
+            <extension>Visualiser la grille et la plus grande région connectée.</extension>
+            <extension>Prendre en compte les connexions diagonales en plus des connexions horizontales et verticales.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="24" nombre="1">
+        <titre>Les Œufs de Pâques – Optimisation de la Recherche</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Dans ce défi, on vous donne une liste d’œufs (chaque œuf étant une clé de recherche avec une valeur associée) et une valeur cible. L'objectif est de trouver la sous-liste contenant les œufs qui permettent d'atteindre la valeur cible, mais avec une contrainte de temps limité : vous devez optimiser l'algorithme pour rechercher en O(log n) si possible (en utilisant une recherche binaire ou une approche de programming dynamique).</explication>
+        <description>Vous devez trouver une sous-liste d'œufs dans une liste donnée qui somme à une valeur cible, en optimisant la recherche pour une complexité de O(log n).</description>
+        <objectifs>
+            <objectif>Implémenter une recherche binaire pour optimiser la recherche de la somme des œufs.</objectif>
+            <objectif>Résoudre le problème dans un temps constant ou logarithmique pour les grandes listes.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme reçoit une liste d'entiers représentant la valeur de chaque œuf et un entier cible. Il doit retourner une sous-liste d'œufs dont la somme est égale à la cible. L'algorithme doit être optimisé (idéalement recherche binaire ou programmation dynamique) pour atteindre une complexité temporelle de O(log n).</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme trouve une sous-liste valide dont la somme correspond à la cible.</critere>
+            <critere>Le programme fonctionne en temps logarithmique (O(log n)) pour les grandes entrées.</critere>
+            <critere>Le code est clair, efficace et bien commenté.</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Gérer les cas où aucune sous-liste ne correspond à la cible.</extension>
+            <extension>Retourner toutes les sous-listes possibles qui correspondent à la cible.</extension>
+            <extension>Permettre des valeurs d'œufs négatives ou nulles.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="23" nombre="1">
+        <titre>Les Fleurs de Pâques – Algorithme de Recherche du Chemin Optimal</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un algorithme qui permet de déterminer le chemin le plus court à travers un champ de fleurs. Chaque fleur est un nœud, et les chemins entre elles ont des coûts différents. Vous devez trouver le chemin de fleurs dont la somme des coûts est minimale, tout en permettant de récolter un œuf à chaque étape. Ce défi combine l'optimisation des chemins et le calcul du coût minimal avec des graphes pondérés.</explication>
+        <description>Créez un algorithme pour trouver le chemin le plus court à travers un champ de fleurs représenté par un graphe pondéré, où le but est de minimiser le coût total du chemin.</description>
+        <objectifs>
+            <objectif>Utiliser l'algorithme de Dijkstra ou A* pour déterminer le chemin optimal.</objectif>
+            <objectif>Gérer un graphe pondéré où chaque fleur est connectée à d'autres fleurs par des chemins de coûts différents.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme implémente l'algorithme de Dijkstra ou A* pour trouver le chemin le plus court dans un graphe pondéré. Chaque fleur est représentée comme un nœud et les chemins entre les fleurs ont des coûts associés. L'algorithme calcule le chemin avec le coût total minimal.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme trouve le chemin le plus court entre le point de départ et la destination.</critere>
+            <critere>Le programme gère correctement les poids des chemins.</critere>
+            <critere>Le programme utilise un algorithme de graphe valide (Dijkstra ou A*).</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Permettre à l'utilisateur de définir le graphe des fleurs et les coûts des chemins.</extension>
+            <extension>Visualiser le graphe et le chemin optimal.</extension>
+            <extension>Ajouter des contraintes supplémentaires (par exemple, des fleurs qui doivent être visitées obligatoirement).</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="25" nombre="1">
+        <titre>Code Secret du Jardin</titre>
+        <temps_execution>50 minutes</temps_execution>
+        <explication>L’objectif est de générer un code secret sous forme d’un bouquet de fleurs. Le code consiste en une séquence de 4 fleurs, où chaque fleur est représentée par un nombre (par exemple, chaque numéro correspond à un type de fleur, comme 1 pour la rose, 2 pour la tulipe, etc.). L’utilisateur doit deviner le bon bouquet, et chaque tentative doit renvoyer des indices indiquant combien de fleurs sont correctes et bien placées, ou mal placées. Les indices peuvent inclure des commentaires humoristiques en lien avec le mois d’avril, comme "Attention, une fleur s'est cachée sous un poisson d'avril !" si la tentative échoue.</explication>
+        <description>L’objectif est de générer un code secret sous forme d’un bouquet de 4 fleurs représentées par des nombres. L’utilisateur devine le code, et le programme fournit des indices sur le nombre de fleurs correctes et leur placement, avec des commentaires humoristiques.</description>
+        <objectifs>
+            <objectif>Générer un code secret de 4 chiffres, chaque chiffre représentant une fleur.</objectif>
+            <objectif>Récupérer la tentative de l’utilisateur.</objectif>
+            <objectif>Comparer la tentative au code secret et déterminer les fleurs bien et mal placées.</objectif>
+            <objectif>Fournir des indices à l’utilisateur, incluant des commentaires humoristiques sur le thème d'avril.</objectif>
+            <objectif>Répéter le processus jusqu’à ce que l’utilisateur devine le code secret.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme génère un code secret de 4 chiffres.  Il demande à l'utilisateur d'entrer une tentative.  Le programme compare la tentative au code secret et fournit des indices indiquant le nombre de chiffres corrects et bien placés, ainsi que le nombre de chiffres corrects mais mal placés. Des commentaires humoristiques sur le thème du mois d'avril sont inclus dans les indices.  Le jeu continue jusqu'à ce que l'utilisateur devine le code secret.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme génère un code secret valide de 4 chiffres.</critere>
+            <critere>Le programme accepte les entrées de l’utilisateur.</critere>
+            <critere>Le programme calcule correctement les fleurs bien placées et mal placées.</critere>
+            <critere>Le programme fournit des indices clairs et humoristiques à l’utilisateur.</critere>
+            <critere>Le programme se termine lorsque le code secret est trouvé.</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Permettre à l'utilisateur de choisir la longueur du code secret.</extension>
+            <extension>Ajouter une limite au nombre de tentatives.</extension>
+            <extension>Implémenter une interface utilisateur graphique.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="27" nombre="1">
+        <titre>Code Secret du Jardin</titre>
+        <temps_execution>50 minutes</temps_execution>
+        <explication>L’objectif est de générer un code secret sous forme d’un bouquet de fleurs. Le code consiste en une séquence de 4 fleurs, où chaque fleur est représentée par un nombre (par exemple, chaque numéro correspond à un type de fleur, comme 1 pour la rose, 2 pour la tulipe, etc.). L’utilisateur doit deviner le bon bouquet, et chaque tentative doit renvoyer des indices indiquant combien de fleurs sont correctes et bien placées, ou mal placées. Les indices peuvent inclure des commentaires humoristiques en lien avec le mois d’avril, comme "Attention, une fleur s'est cachée sous un poisson d'avril !" si la tentative échoue.</explication>
+        <description>L’objectif est de générer un code secret sous forme d’un bouquet de 4 fleurs représentées par des nombres. L’utilisateur devine le code, et le programme fournit des indices sur le nombre de fleurs correctes et leur placement, avec des commentaires humoristiques.</description>
+        <objectifs>
+            <objectif>Générer un code secret de 4 chiffres, chaque chiffre représentant une fleur.</objectif>
+            <objectif>Récupérer la tentative de l’utilisateur.</objectif>
+            <objectif>Comparer la tentative au code secret et déterminer les fleurs bien et mal placées.</objectif>
+            <objectif>Fournir des indices à l’utilisateur, incluant des commentaires humoristiques sur le thème d'avril.</objectif>
+            <objectif>Répéter le processus jusqu’à ce que l’utilisateur devine le code secret.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme génère un code secret de 4 chiffres.  Il demande à l'utilisateur d'entrer une tentative.  Le programme compare la tentative au code secret et fournit des indices indiquant le nombre de chiffres corrects et bien placés, ainsi que le nombre de chiffres corrects mais mal placés. Des commentaires humoristiques sur le thème du mois d'avril sont inclus dans les indices.  Le jeu continue jusqu'à ce que l'utilisateur devine le code secret.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme génère un code secret valide de 4 chiffres.</critere>
+            <critere>Le programme accepte les entrées de l’utilisateur.</critere>
+            <critere>Le programme calcule correctement les fleurs bien placées et mal placées.</critere>
+            <critere>Le programme fournit des indices clairs et humoristiques à l’utilisateur.</critere>
+            <critere>Le programme se termine lorsque le code secret est trouvé.</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Permettre à l'utilisateur de choisir la longueur du code secret.</extension>
+            <extension>Ajouter une limite au nombre de tentatives.</extension>
+            <extension>Implémenter une interface utilisateur graphique.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="26" nombre="1">
+        <titre>La Chasse aux Œufs</titre>
+        <temps_execution>50 minutes</temps_execution>
+        <explication>Inspiré par la chasse aux œufs de Pâques, ce défi consiste à générer une grille (type 2D) où des œufs de Pâques sont cachés à des positions aléatoires. L'utilisateur doit trouver ces œufs, en leur attribuant un numéro (par exemple, 1 pour un œuf rouge, 2 pour un œuf bleu, etc.). Le défi consiste à optimiser l'algorithme pour que la grille affiche l’emplacement des œufs, et qu’à chaque tentative, le programme indique si un œuf est trouvé ou non. À chaque erreur, un message de "poisson d'avril" pourrait être affiché, comme "Oops, cet œuf a disparu sous une fleur !".</explication>
+        <description>Créer un programme qui simule une chasse aux œufs de Pâques dans une grille 2D. Le programme place aléatoirement des œufs numérotés dans la grille. L'utilisateur tente de trouver les œufs. Le programme indique si un œuf est trouvé et affiche un message humoristique en cas d'erreur.</description>
+        <objectifs>
+            <objectif>Générer une grille 2D avec des œufs de Pâques cachés à des positions aléatoires.</objectif>
+            <objectif>Permettre à l'utilisateur de saisir les coordonnées d'une tentative pour trouver un œuf.</objectif>
+            <objectif>Vérifier si la tentative correspond à la position d'un œuf caché.</objectif>
+            <objectif>Afficher un message indiquant si un œuf est trouvé, et quel type d'œuf.</objectif>
+            <objectif>Afficher un message humoristique de "poisson d'avril" si la tentative est incorrecte.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme génère une grille 2D et place aléatoirement des œufs numérotés. Il invite l'utilisateur à entrer les coordonnées d'une tentative.  Le programme vérifie si les coordonnées correspondent à un œuf caché. Si un œuf est trouvé, il affiche un message indiquant le type d'œuf. Si la tentative est incorrecte, il affiche un message humoristique de "poisson d'avril". Le jeu continue jusqu'à ce que tous les œufs soient trouvés ou que l'utilisateur abandonne.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme génère une grille 2D valide avec des œufs cachés.</critere>
+            <critere>Le programme accepte les coordonnées de l'utilisateur.</critere>
+            <critere>Le programme vérifie correctement si un œuf est trouvé.</critere>
+            <critere>Le programme affiche des messages appropriés (œuf trouvé ou message humoristique).</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Permettre à l'utilisateur de spécifier la taille de la grille et le nombre d'œufs.</extension>
+            <extension>Afficher la grille à chaque tour, avec les œufs déjà trouvés révélés.</extension>
+            <extension>Ajouter un système de score ou un nombre limité de tentatives.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="28" nombre="1">
+        <titre>La Course des Pétales</titre>
+        <temps_execution>40 minutes</temps_execution>
+        <explication>Dans ce défi, on simule une course où plusieurs pétales de fleurs (représentés par des entiers) vont "avancer" à une vitesse aléatoire, mais selon des règles fixées par le joueur. Le programme doit afficher chaque mouvement des pétales sur un axe (par exemple, de 0 à 100). L’objectif est de prévoir quel pétale va arriver en premier, en fonction de la vitesse définie par un facteur aléatoire. En cas de mauvais choix, le programme affiche un message humoristique lié au mois d'avril, comme "Ce pétale a pris un chemin secret !".</explication>
+        <description>Simule une course de pétales de fleurs représentés par des entiers avançant à vitesse aléatoire sur un axe. Le programme affiche leur mouvement et détermine le pétale gagnant, affichant un message humoristique si l'utilisateur fait une mauvaise prédiction.</description>
+        <objectifs>
+            <objectif>Simuler le mouvement de plusieurs pétales de fleurs sur un axe.</objectif>
+            <objectif>Attribuer une vitesse aléatoire à chaque pétale.</objectif>
+            <objectif>Afficher la position de chaque pétale à chaque étape de la course.</objectif>
+            <objectif>Permettre à l'utilisateur de prédire quel pétale arrivera en premier.</objectif>
+            <objectif>Afficher le résultat de la course et un message humoristique si la prédiction est incorrecte.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme simule une course où des pétales de fleurs (représentés par des entiers) avancent à une vitesse aléatoire sur un axe.  Le programme affiche la position de chaque pétale à chaque étape. L'utilisateur peut prédire quel pétale gagnera. Si la prédiction de l'utilisateur est incorrecte, le programme affiche un message humoristique sur le thème d'avril.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme simule le mouvement des pétales avec des vitesses aléatoires.</critere>
+            <critere>Le programme affiche la position des pétales à chaque étape.</critere>
+            <critere>Le programme permet à l'utilisateur de faire une prédiction.</critere>
+            <critere>Le programme détermine correctement le pétale gagnant.</critere>
+            <critere>Le programme affiche un message humoristique approprié si la prédiction est incorrecte.</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Permettre à l'utilisateur de spécifier le nombre de pétales et la longueur de la course.</extension>
+            <extension>Visualiser la course avec une interface graphique.</extension>
+            <extension>Ajouter des variations de vitesse (par exemple, accélération, décélération).</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="29" nombre="1">
+        <titre>Le Puzzle du Jardin</titre>
+        <temps_execution>50 minutes</temps_execution>
+        <explication>Créer un puzzle où chaque pièce est une fleur. L'utilisateur doit assembler les pièces pour reformer un joli jardin ou un motif de fleurs. Chaque pièce est composée de chiffres ou de couleurs et peut être glissée dans différentes positions sur une grille. Le défi est de créer un algorithme qui valide si les pièces sont bien placées (en respectant un certain motif, comme une fleur ou une forme de jardin). À chaque mouvement incorrect, un message "poisson d’avril" pourrait apparaître, par exemple, "Oups, cette fleur est fanée, essaie une autre !".</explication>
+        <description>Crée un puzzle où l'utilisateur assemble des pièces-fleurs (chiffres ou couleurs) sur une grille pour former un motif, avec des messages "poisson d'avril" pour les placements incorrects.</description>
+        <objectifs>
+            <objectif>Créer un puzzle où chaque pièce est représentée par un chiffre ou une couleur.</objectif>
+            <objectif>Définir un motif cible pour le puzzle (par exemple, une fleur, un jardin).</objectif>
+            <objectif>Permettre à l'utilisateur de déplacer les pièces sur une grille.</objectif>
+            <objectif>Valider si les pièces sont correctement placées par rapport au motif cible.</objectif>
+            <objectif>Afficher un message "poisson d'avril" humoristique pour les placements incorrects.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme crée un puzzle où chaque pièce est une fleur (représentée par des chiffres ou des couleurs). L'utilisateur déplace les pièces sur une grille pour reformer un motif. Le programme valide si les pièces sont correctement placées et affiche un message "poisson d’avril" humoristique pour les placements incorrects.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme représente correctement les pièces du puzzle et le motif cible.</critere>
+            <critere>Le programme permet à l'utilisateur de déplacer les pièces sur la grille.</critere>
+            <critere>Le programme valide correctement le placement des pièces.</critere>
+            <critere>Le programme affiche des messages "poisson d'avril" humoristiques pour les placements incorrects.</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Permettre à l'utilisateur de choisir la difficulté du puzzle (taille de la grille, complexité du motif).</extension>
+            <extension>Visualiser le puzzle avec une interface graphique.</extension>
+            <extension>Ajouter des fonctionnalités pour aider l'utilisateur (par exemple, des indices, la possibilité d'annuler des mouvements).</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="1" nombre="1">
+        <titre>Le Lapin de Pâques et les Mots Croisés</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un générateur de mots croisés sur le thème de Pâques. Le programme doit générer une grille de mots croisés avec des définitions liées à Pâques et des mots à trouver. Le joueur devra résoudre les mots croisés pour découvrir un message caché.</explication>
+        <description>Le programme génère une grille de mots croisés avec des définitions et des mots liés à Pâques. Le joueur devra résoudre les mots croisés pour découvrir un message caché.</description>
+        <objectifs>
+            <objectif>Générer une grille de mots croisés avec des définitions et des mots liés à Pâques.</objectif>
+            <objectif>Permettre au joueur de résoudre les mots croisés.</objectif>
+            <objectif>Révéler un message caché une fois les mots croisés résolus.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme génère une grille de mots croisés avec des définitions et des mots liés à Pâques. Le joueur doit remplir la grille en devinant les mots à partir des définitions. Une fois les mots croisés résolus, le programme révèle un message caché.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme génère une grille de mots croisés valide.</critere>
+            <critere>Le joueur peut résoudre les mots croisés.</critere>
+            <critere>Un message caché est révélé à la fin.</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Ajouter des niveaux de difficulté.</extension>
+            <extension>Permettre à l'utilisateur de personnaliser la taille de la grille.</extension>
+            <extension>Ajouter des indices pour aider le joueur.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="2" nombre="1">
+        <titre>Le Mystère des Œufs Codés</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un programme qui permet de coder et décoder des messages secrets en utilisant un algorithme de cryptographie simple. Les messages seront cachés dans des œufs de Pâques et devront être décodés pour révéler leur contenu.</explication>
+        <description>Le programme permet de coder et décoder des messages secrets en utilisant un algorithme de cryptographie simple.</description>
+        <objectifs>
+            <objectif>Implémenter un algorithme de cryptographie simple.</objectif>
+            <objectif>Permettre à l'utilisateur de coder et décoder des messages.</objectif>
+            <objectif>Cacher les messages dans des œufs de Pâques virtuels.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme utilise un algorithme de cryptographie simple pour coder et décoder des messages. L'utilisateur peut choisir de coder ou décoder un message. Les messages codés sont cachés dans des œufs de Pâques virtuels.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme code et décode correctement les messages.</critere>
+            <critere>L'algorithme de cryptographie est fonctionnel.</critere>
+            <critere>Les messages sont cachés dans des œufs de Pâques virtuels.</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Ajouter des algorithmes de cryptographie plus complexes.</extension>
+            <extension>Permettre à l'utilisateur de choisir l'algorithme de cryptographie.</extension>
+            <extension>Ajouter une interface graphique.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="3" nombre="1">
+        <titre>La Chasse aux Œufs Virtuelle</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un jeu de chasse aux œufs virtuelle où les joueurs doivent trouver des œufs cachés dans un environnement virtuel (une grille 2D ou un labyrinthe). Les joueurs peuvent se déplacer dans l'environnement et interagir avec les objets pour trouver les œufs.</explication>
+        <description>Le jeu de chasse aux œufs virtuelle permet aux joueurs de trouver des œufs cachés dans un environnement virtuel.</description>
+        <objectifs>
+            <objectif>Créer un environnement virtuel (grille 2D ou labyrinthe).</objectif>
+            <objectif>Cacher des œufs dans l'environnement virtuel.</objectif>
+            <objectif>Permettre aux joueurs de se déplacer et d'interagir avec l'environnement.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme crée un environnement virtuel (grille 2D ou labyrinthe) et cache des œufs dedans. Les joueurs peuvent se déplacer dans l'environnement et interagir avec les objets pour trouver les œufs.</fonctionnement>
+        <criteres_succes>
+            <critere>L'environnement virtuel est créé avec succès.</critere>
+            <critere>Les œufs sont cachés dans l'environnement.</critere>
+            <critere>Les joueurs peuvent se déplacer et interagir avec l'environnement.</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Ajouter des niveaux de difficulté.</extension>
+            <extension>Permettre aux joueurs de personnaliser leur personnage.</extension>
+            <extension>Ajouter un mode multijoueur.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="4" nombre="1">
+        <titre>Le Lapin Musicien de Pâques</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un programme qui génère une mélodie de Pâques en utilisant des sons ou des notes de musique. Le programme doit permettre de personnaliser la mélodie en choisissant les instruments, les notes et le rythme.</explication>
+        <description>Le programme génère une mélodie de Pâques en utilisant des sons ou des notes de musique.</description>
+        <objectifs>
+            <objectif>Générer une mélodie de Pâques.</objectif>
+            <objectif>Permettre de personnaliser la mélodie (instruments, notes, rythme).</objectif>
+            <objectif>Jouer la mélodie.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme génère une mélodie de Pâques en utilisant des sons ou des notes de musique. L'utilisateur peut personnaliser la mélodie en choisissant les instruments, les notes et le rythme. Le programme joue ensuite la mélodie.</fonctionnement>
+        <criteres_succes>
+            <critere>Le programme génère une mélodie de Pâques.</critere>
+            <critere>La mélodie est personnalisable.</critere>
+            <critere>La mélodie est jouée correctement.</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Ajouter des instruments et des effets sonores.</extension>
+            <extension>Permettre à l'utilisateur de composer sa propre mélodie.</extension>
+            <extension>Ajouter une interface graphique pour visualiser la mélodie.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="5" nombre="1">
+        <titre>Le Défi des Œufs Colorés</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un jeu de logique où le joueur doit deviner l'ordre de couleurs d'une séquence d'œufs cachée. Le programme donne des indices sur les couleurs bien placées et mal placées.</explication>
+        <description>Jeu de logique de devinette de séquence de couleurs.</description>
+        <objectifs>
+            <objectif>Générer une séquence de couleurs aléatoire.</objectif>
+            <objectif>Comparer la séquence du joueur avec la séquence cachée.</objectif>
+            <objectif>Fournir des indices sur les couleurs bien et mal placées.</objectif>
+        </objectifs>
+        <fonctionnement>Le joueur tente de deviner une séquence de couleurs, et le programme donne des indices pour chaque tentative.</fonctionnement>
+        <criteres_succes>
+            <critere>Séquence de couleurs générée aléatoirement.</critere>
+            <critere>Indices précis fournis au joueur.</critere>
+            <critere>Jeu interactif et logique.</critere>
+        </criteres_succes>
+    </challenge>
+
+
+    <challenge jour="6" nombre="1">
+        <titre>Le Lapin Botaniste et le Jardin Enchanté de Pâques (Terminal)</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un simulateur de jardinage textuel en terminal où le joueur doit cultiver des plantes de Pâques magiques en utilisant des commandes textuelles pour les combinaisons d'ingrédients et de sorts. Le programme génère des plantes uniques avec des propriétés spéciales décrites textuellement.</explication>
+        <description>Simulation de jardinage textuel de plantes de Pâques magiques via le terminal.</description>
+        <objectifs>
+            <objectif>Générer des plantes de Pâques magiques avec des propriétés spéciales décrites textuellement.</objectif>
+            <objectif>Permettre au joueur de cultiver les plantes via des commandes textuelles pour les ingrédients et les sorts.</objectif>
+            <objectif>Découvrir les propriétés uniques de chaque plante via des descriptions textuelles.</objectif>
+        </objectifs>
+        <fonctionnement>Le joueur cultive des plantes via des commandes textuelles, et le programme révèle les propriétés uniques de chaque plante via des descriptions textuelles.</fonctionnement>
+        <criteres_succes>
+            <critere>Plantes de Pâques magiques générées avec des propriétés uniques décrites textuellement.</critere>
+            <critere>Simulation de jardinage textuelle interactive et créative.</critere>
+            <critere>Découverte des propriétés des plantes par le joueur via des descriptions textuelles.</critere>
+        </criteres_succes>
+        <extensions_facultatives>
+            <extension>Ajouter la possibilité de cacher des oeufs de Pâques.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="7" nombre="1">
+        <titre>Le Mystère du Navire Chocolaté d'Avril</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Le navire, chargé de précieux chocolats d'avril, doit éviter une tempête de cacao. Déterminez la distance Manhattan chocolatée à la fin des instructions de navigation.</explication>
+        <description>Calcul de la distance Manhattan chocolatée du navire après une série d'instructions de navigation.</description>
+        <objectifs>
+            <objectif>Interpréter les instructions de navigation chocolatées.</objectif>
+            <objectif>Calculer la position finale du navire.</objectif>
+            <objectif>Calculer la distance Manhattan chocolatée.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme lit une série d'instructions de navigation chocolatées et calcule la position finale du navire. La distance Manhattan chocolatée est ensuite calculée.</fonctionnement>
+        <criteres_succes>
+            <critere>Instructions de navigation chocolatées correctement interprétées.</critere>
+            <critere>Position finale du navire correctement calculée.</critere>
+            <critere>Distance Manhattan chocolatée correctement calculée.</critere>
+        </criteres_succes>
+        <instructions>
+            <instruction>C est un déplacement Nord (Cacao-Nord) de la valeur donnée (ex: C10).</instruction>
+            <instruction>L est un déplacement Sud (Lait-Sud) de la valeur donnée (ex: L5).</instruction>
+            <instruction>E est un déplacement Est (Épice-Est) de la valeur donnée (ex: E8).</instruction>
+            <instruction>A est un déplacement Ouest (Amande-Ouest) de la valeur donnée (ex: A3).</instruction>
+            <instruction>G est une rotation Gauche du nombre de degrés donné (ex: G90).</instruction>
+            <instruction>D est une rotation Droite du nombre de degrés donné (ex: D180).</instruction>
+            <instruction>M est un déplacement dans la direction actuelle de la valeur donnée (ex: M12).</instruction>
+        </instructions>
+        <output>Pour la commande M10, C3, M7, D90, et M11 cela donne le retour 25. Explication du calcul : M10: 10 unités à l'est. C3: 3 unités au nord. M7: 7 unités à l'est. D90: Tourne 90° à droite (sud). M11: 11 unités au sud. Distance: |10 + 7| + |3 - 11| = 17 + 8 = 25.</output>
+        <extensions_facultatives>
+            <extension>Visualiser le trajet du navire sur une carte textuelle.</extension>
+            <extension>Ajouter des obstacles et des événements aléatoires à la navigation.</extension>
+            <extension>Permettre à l'utilisateur de saisir ses propres instructions de navigation.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="8" nombre="1">
+        <titre>Le Jeu des Tasses du Lapin</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Le petit lapin vous défie à un jeu ! Le lapin va mélanger des tasses, et vous devez prédire où elles finiront.</explication>
+        <description>Simulation de mélange de tasses par un lapin et prédiction de leur ordre final.</description>
+        <objectifs>
+            <objectif>Simuler le mélange de tasses par le lapin.</objectif>
+            <objectif>Suivre le déplacement des tasses pendant les mouvements.</objectif>
+            <objectif>Déterminer l'ordre final des tasses après 100 mouvements.</objectif>
+        </objectifs>
+        <fonctionnement>
+            Les tasses sont disposées en cercle et étiquetées dans le sens horaire. Le lapin désigne la première tasse comme tasse courante et effectue 100 mouvements, en suivant les règles de sélection, de déplacement et de placement des tasses.</fonctionnement>
+        <criteres_succes>
+            <critere>Simulation correcte des mouvements du lapin.</critere>
+            <critere>Détermination précise de l'ordre final des tasses.</critere>
+            <critere>Résultat correct pour l'ordre des tasses après la tasse 1.</critere>
+        </criteres_succes>
+        <instructions>
+            <instruction>Le lapin prend les trois tasses immédiatement dans le sens horaire de la tasse courante.</instruction>
+            <instruction>Le lapin sélectionne une tasse de destination : la tasse avec une étiquette égale à l'étiquette de la tasse courante moins un.</instruction>
+            <instruction>Si la tasse de destination est une des tasses prises, le lapin soustrait un jusqu'à trouver une tasse non prise.</instruction>
+            <instruction>Si la valeur devient inférieure à la valeur minimale, le lapin revient à la valeur maximale.</instruction>
+            <instruction>Le lapin place les tasses prises immédiatement dans le sens horaire de la tasse de destination.</instruction>
+            <instruction>Le lapin sélectionne une nouvelle tasse courante : la tasse immédiatement dans le sens horaire de la tasse courante.</instruction>
+        </instructions>
+        <output>Après les 100 mouvements, déterminez l'ordre des tasses en commençant après la tasse étiquetée 1.</output>
+        <exemple_de_deroulement>
+            <deroulement>Pour l'étiquetage 389125467, après 10 mouvements, l'ordre est 5 8 3 7 4 1 9 2 6.</deroulement>
+            <deroulement>Après 100 mouvements, trouvez l'ordre final des tasses après la tasse 1.</deroulement>
+        </exemple_de_deroulement>
+        <extensions_facultatives>
+            <extension>Visualiser les mouvements du lapin avec des animations ASCII.</extension>
+            <extension>Permettre à l'utilisateur de choisir le nombre de mouvements.</extension>
+            <extension>Implémenter un mode multijoueur où les joueurs devinent l'ordre final.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="9" nombre="1">
+        <titre>Les Sacs Chocolatés Utiles</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Vous arrivez à l'aéroport régional juste à temps pour votre prochain vol. Il semble que vous aurez même le temps de prendre de la nourriture : tous les vols sont actuellement retardés en raison de problèmes de traitement des bagages. En raison de récentes réglementations sur l'aviation, de nombreuses règles (votre entrée de puzzle) sont appliquées concernant les sacs et leur contenu ; les sacs doivent être codés par couleur et doivent contenir des quantités spécifiques d'autres sacs codés par couleur. Apparemment, personne responsable de ces réglementations n'a considéré combien de temps ils prendraient à appliquer !</explication>
+        <description>Détermination des sacs pouvant contenir un sac de chocolat doré brillant.</description>
+        <objectifs>
+            <objectif>Analyser les règles de contenu des sacs de chocolat.</objectif>
+            <objectif>Identifier les sacs pouvant contenir directement ou indirectement un sac de chocolat doré brillant.</objectif>
+            <objectif>Compter le nombre de couleurs de sacs pouvant finalement contenir un sac de chocolat doré brillant.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme lit les règles de contenu des sacs de chocolat et détermine combien de couleurs de sacs peuvent finalement contenir un sac de chocolat doré brillant.</fonctionnement>
+        <criteres_succes>
+            <critere>Analyse correcte des règles de contenu des sacs de chocolat.</critere>
+            <critere>Identification précise des sacs pouvant contenir un sac de chocolat doré brillant.</critere>
+            <critere>Compte correct du nombre de couleurs de sacs.</critere>
+        </criteres_succes>
+        <instructions>
+            <instruction>Chaque règle spécifie le contenu requis pour un type de sac de chocolat.</instruction>
+            <instruction>Un sac de chocolat doré brillant doit être contenu dans au moins un autre sac.</instruction>
+            <instruction>Déterminez combien de couleurs de sacs peuvent finalement contenir un sac de chocolat doré brillant.</instruction>
+        </instructions>
+        <output>Déterminez combien de couleurs de sacs de chocolat peuvent finalement contenir un sac de chocolat doré brillant.</output>
+        <exemple_de_deroulement>
+            <deroulement>Pour les règles suivantes :
+                sacs chocolat rouge clair contiennent 1 sac chocolat blanc brillant, 2 sacs chocolat jaune atténué.
+                sacs chocolat orange foncé contiennent 3 sacs chocolat blanc brillant, 4 sacs chocolat jaune atténué.
+                sacs chocolat blanc brillant contiennent 1 sac chocolat doré brillant.
+                sacs chocolat jaune atténué contiennent 2 sacs chocolat doré brillant, 9 sacs chocolat bleu fané.
+                sacs chocolat doré brillant contiennent 1 sac chocolat olive foncé, 2 sacs chocolat prune vibrant.
+                sacs chocolat olive foncé contiennent 3 sacs chocolat bleu fané, 4 sacs chocolat noir pointillé.
+                sacs chocolat prune vibrant contiennent 5 sacs chocolat bleu fané, 6 sacs chocolat noir pointillé.
+                sacs chocolat bleu fané ne contiennent pas d'autres sacs.
+                sacs chocolat noir pointillé ne contiennent pas d'autres sacs.
+                La réponse est 4 (chocolat blanc brillant, chocolat jaune atténué, chocolat orange foncé, chocolat rouge clair).
+            </deroulement>
+        </exemple_de_deroulement>
+        <extensions_facultatives>
+            <extension>Visualiser les relations entre les sacs de chocolat avec un graphique.</extension>
+            <extension>Permettre à l'utilisateur de spécifier le type de sac de chocolat à rechercher.</extension>
+            <extension>Calculer le nombre total de sacs de chocolat pouvant être contenus dans un sac donné.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="10" nombre="1">
+        <titre>Le Dessinateur de Pâques en ASCII (XYTypeCouleur)</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un programme qui prend en entrée une série de commandes de dessin au format XYTypeCouleur et génère une image de Pâques en ASCII dans le terminal.</explication>
+        <description>Génération d'images de Pâques en ASCII à partir de commandes de dessin au format XYTypeCouleur.</description>
+        <objectifs>
+            <objectif>Interpréter les commandes de dessin au format XYTypeCouleur.</objectif>
+            <objectif>Générer des formes de Pâques en ASCII.</objectif>
+            <objectif>Appliquer les couleurs spécifiées par une seule lettre.</objectif>
+            <objectif>Afficher l'image ASCII résultante dans le terminal.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme lit une série de commandes de dessin au format XYTypeCouleur, interprète chaque commande pour dessiner des formes en ASCII colorées aux positions spécifiées, et affiche l'image résultante dans le terminal.</fonctionnement>
+        <criteres_succes>
+            <critere>Interprétation correcte des commandes de dessin au format XYTypeCouleur.</critere>
+            <critere>Génération précise des formes de Pâques en ASCII colorées.</critere>
+            <critere>Respect des positions et couleurs spécifiées.</critere>
+            <critere>Affichage correct de l'image ASCII dans le terminal.</critere>
+        </criteres_succes>
+        <instructions>
+            <instruction>Commande : [XY][Type][Couleur]. XY : Coordonnées (jusqu'à quatre chiffres). Type : T (triangle), C (cercle), R (rectangle), L (ligne), etc. Couleur : R (rouge), V (vert), B (bleu), J (jaune), M (magenta), C (cyan), W (blanc).</instruction>
+            <instruction>Exemple de commande : 1020TR (dessine un triangle rouge à la position (10, 20)).</instruction>
+            <instruction>Exemple de commande : 5010CB (dessine un cercle bleu à la position (50, 10)).</instruction>
+        </instructions>
+        <output>
+            L'image de Pâques en ASCII résultante affichée dans le terminal.
+        </output>
+        <exemple_de_deroulement>
+            <deroulement>Commande : 1020TR Résultat : Un triangle rouge dessiné à la position (10, 20).</deroulement>
+            <deroulement>Commande : 5010CB Résultat : Un cercle bleu dessiné à la position (50, 10).</deroulement>
+        </exemple_de_deroulement>
+        <extensions_facultatives>
+            <extension>Ajouter d'autres formes de Pâques (fleurs, paniers).</extension>
+            <extension>Permettre la spécification de tailles pour les formes.</extension>
+            <extension>Implémenter un mode interactif où l'utilisateur dessine directement dans le terminal.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="11" nombre="1">
+        <titre>Le Festin Mathématique d'Avril</titre>
+        <temps_execution>1 heure</temps_execution>
+        <explication>Créez un programme qui génère des opérations mathématiques simples et aléatoires impliquant deux nombres et un opérateur représenté par un élément d'avril (œuf pour multiplication, poisson pour soustraction, chocolat pour somme, lapin pour division, fleur pour racine carrée, pluie pour valeur absolue, bourgeon pour carré).</explication>
+        <description>Génération et résolution d'opérations mathématiques simples et aléatoires avec des opérateurs représentés par des éléments d'avril.</description>
+        <objectifs>
+            <objectif>Générer aléatoirement des nombres et des opérateurs mathématiques représentés par des éléments d'avril.</objectif>
+            <objectif>Créer des opérations mathématiques simples sur le thème d'avril où les éléments à calculer et les opérateurs sont des éléments d'avril.</objectif>
+            <objectif>Afficher les opérations et permettre au joueur de les résoudre.</objectif>
+            <objectif>Vérifier les réponses du joueur et fournir un score.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme génère des opérations mathématiques simples et aléatoires, les affiche au joueur, reçoit les réponses du joueur, vérifie les réponses et attribue un score.</fonctionnement>
+        <criteres_succes>
+            <critere>Génération correcte d'opérations mathématiques simples et aléatoires.</critere>
+            <critere>Opérations mathématiques cohérentes sur le thème d'avril où les éléments à calculer et les opérateurs sont des éléments d'avril.</critere>
+            <critere>Interface utilisateur claire pour la saisie des réponses.</critere>
+            <critere>Calcul correct du score du joueur.</critere>
+        </criteres_succes>
+        <instructions>
+            <instruction>Les nombres générés aléatoirement doivent être des entiers entre 1 et 20.</instruction>
+            <instruction>Les opérateurs possibles sont : œuf (multiplication), poisson (soustraction), chocolat (somme), lapin (division), fleur (racine carrée), pluie (valeur absolue), bourgeon (carré).</instruction>
+            <instruction>Exemple : 15 œuf 3 = ? (œuf = multiplication)</instruction>
+            <instruction>Exemple : 10 pluie = ? (pluie = valeur absolue)</instruction>
+            <instruction>Exemple : 9 fleur = ? (fleur = racine carrée)</instruction>
+            <instruction>Exemple : 5 bourgeon = ? (bourgeon = x²)</instruction>
+            <instruction>Le joueur doit saisir la réponse et le programme doit vérifier si elle est correcte.</instruction>
+        </instructions>
+        <output>Le score final du joueur après avoir résolu toutes les opérations.</output>
+        <exemple_de_deroulement>
+            <deroulement>Opération : 15 œuf 3 = ? Joueur : 45 Résultat : Correct.</deroulement>
+            <deroulement>Opération : 12 poisson 4 = ? Joueur : 8 Résultat : Correct.</deroulement>
+            <deroulement>Opération : 10 chocolat 2 = ? Joueur : 12 Résultat : Correct.</deroulement>
+            <deroulement>Opération : 20 lapin 4 = ? Joueur : 5 Résultat : Correct.</deroulement>
+            <deroulement>Opération : -5 pluie = ? Joueur : 5 Résultat : Correct.</deroulement>
+            <deroulement>Opération : 16 fleur = ? Joueur : 4 Résultat : Correct.</deroulement>
+            <deroulement>Opération : 3 bourgeon = ? Joueur : 9 Résultat : Correct.</deroulement>
+        </exemple_de_deroulement>
+        <extensions_facultatives>
+            <extension>Ajouter des niveaux de difficulté.</extension>
+            <extension>Implémenter un chronomètre pour chaque opération.</extension>
+            <extension>Permettre au joueur de choisir les éléments à utiliser dans les opérations.</extension>
+            <extension>Exécuter les opérations et les résultats dans un fichier texte.</extension>
+            <extension>Ajouter des opérations complexes (par exemple, 15 œuf 3 chocolat 2 = ?).</extension>
+            <extension>Permettre l'ajout de nouveaux opérateurs définis par l'utilisateur.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="12" nombre="1">
+        <titre>Les Messages Codés des Lapins Voleurs</titre>
+        <temps_execution>2 heures</temps_execution>
+        <explication>Créez un programme qui déchiffre des messages en code Morse envoyés par un réseau de lapins voleurs de chocolats. Ces messages contiennent des informations sur leurs prochaines cibles et les cachettes des butins.</explication>
+        <description>Déchiffrement de messages en code Morse pour une mission d'espionnage sur des lapins voleurs de chocolats.</description>
+        <objectifs>
+            <objectif>Interpréter les séquences de points et de traits du code Morse.</objectif>
+            <objectif>Traduire les séquences de code Morse en caractères correspondants.</objectif>
+            <objectif>Gérer les espaces entre les lettres et les mots.</objectif>
+            <objectif>Afficher les informations traduites sur les vols de chocolats.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme lit des messages en code Morse, interprète chaque séquence, convertit les séquences en caractères, gère les espaces et affiche les informations traduites sur les vols de chocolats.</fonctionnement>
+        <criteres_succes>
+            <critere>Interprétation correcte des séquences de code Morse.</critere>
+            <critere>Traduction précise des séquences en caractères.</critere>
+            <critere>Gestion correcte des espaces entre les lettres et les mots.</critere>
+            <critere>Affichage clair des informations sur les vols de chocolats.</critere>
+        </criteres_succes>
+        <instructions>
+            <instruction>Le code Morse d'entrée sera une chaîne de caractères contenant des points (.), des traits (-) et des espaces.</instruction>
+            <instruction>Un espace simple sépare les lettres, un espace double sépare les mots.</instruction>
+            <instruction>Le programme doit gérer les lettres de A à Z, les chiffres de 0 à 9 et les symboles courants (par exemple, point, virgule, point d'interrogation).</instruction>
+            <instruction>Le programme doit ignorer les caractères non valides.</instruction>
+            <instruction>Les messages peuvent contenir des noms de lieux (cachettes), des dates (plannings de vols), des noms de personnes (cibles) et des codes secrets (types de chocolats).</instruction>
+        </instructions>
+        <output>
+            Les informations traduites sur les vols de chocolats.
+        </output>
+        <exemple_de_deroulement>
+            <deroulement>Entrée : -.-. .-.. .  .-. . -- .. ... .  --. .- - . .- ..-  ... --- ..- ...  -.-. .- - .... . - ...</deroulement>
+            <deroulement>Sortie : KLE REMISE GATEAU SOUS CACHETTES</deroulement>
+            <deroulement>Entrée : -.. .- -. ...  .- .-. - .  - .-. --- .. ...  -.. .  -.-. .... --- -.-. --- .-.. .- - ...</deroulement>
+            <deroulement>Sortie : DANS ARBRE TROIS DE CHOCOLATS</deroulement>
+        </exemple_de_deroulement>
+        <extensions_facultatives>
+            <extension>Ajouter la possibilité de traduire du texte clair en morse.</extension>
+            <extension>Ajouter la possibilité de lire un fichier contenant du morse.</extension>
+            <extension>Réalisation d'une interface graphique.</extension>
+        </extensions_facultatives>
+    </challenge>
+
+
+    <challenge jour="30" nombre="1">
+        <titre>Le Défi de Gilbertonin : Le Labyrinthe des Carottes Perdues (Touches WTF)</titre>
+        <temps_execution>5 heures</temps_execution>
+        <explication>Gilbertonin, notre explorateur aventureux, s'est perdu dans un labyrinthe rempli de carottes. Votre mission est de créer un programme qui génère un labyrinthe, trouve le chemin le plus court pour récupérer toutes les carottes et permet à Gilbertonin de s'échapper. Utilisez des touches « wtf » pour les déplacements.</explication>
+        <description>Génération de labyrinthe, recherche de chemin et simulation de l'évasion de Gilbertonin avec des touches « wtf ».</description>
+        <objectifs>
+            <objectif>Générer un labyrinthe aléatoire avec des carottes dispersées.</objectif>
+            <objectif>Implémenter un algorithme de recherche de chemin pour trouver le chemin le plus court vers toutes les carottes.</objectif>
+            <objectif>Simuler le déplacement de Gilbertonin dans le labyrinthe pour récupérer les carottes et s'échapper en utilisant des touches « wtf ».</objectif>
+            <objectif>Créer une interface graphique (ou console) pour afficher le labyrinthe, le chemin de Gilbertonin et les carottes récupérées.</objectif>
+            <objectif>Permettre à l'utilisateur de personnaliser la taille et la difficulté du labyrinthe.</objectif>
+        </objectifs>
+        <fonctionnement>Le programme génère un labyrinthe aléatoire, place les carottes à des endroits aléatoires, utilise un algorithme de recherche de chemin pour trouver le chemin le plus court, simule le déplacement de Gilbertonin avec des touches « wtf », affiche le labyrinthe et le chemin dans une interface graphique (ou console) interactive.</fonctionnement>
+        <criteres_succes>
+            <critere>Génération correcte d'un labyrinthe aléatoire.</critere>
+            <critere>Implémentation efficace d'un algorithme de recherche de chemin.</critere>
+            <critere>Simulation précise du déplacement de Gilbertonin avec des touches « wtf ».</critere>
+            <critere>Interface graphique (ou console) claire et interactive.</critere>
+            <critere>Personnalisation de la taille et de la difficulté du labyrinthe.</critere>
+        </criteres_succes>
+        <instructions>
+            <instruction>Le labyrinthe doit être représenté par une grille de cellules.</instruction>
+            <instruction>Les carottes doivent être placées à des endroits aléatoires dans le labyrinthe.</instruction>
+            <instruction>Le programme doit utiliser un algorithme de recherche de chemin (par exemple, A*, Dijkstra) pour trouver le chemin le plus court.</instruction>
+            <instruction>L'interface graphique (ou console) doit afficher le labyrinthe, le chemin de Gilbertonin et les carottes récupérées.</instruction>
+            <instruction>L'utilisateur doit pouvoir personnaliser la taille et la difficulté du labyrinthe en ajustant le nombre de cellules, le nombre de carottes et la complexité des chemins.</instruction>
+            <instruction>Utilisez des touches « wtf » pour les déplacements :</instruction>
+            <instruction>    - Interface graphique : 'A' (haut), 'B' (bas), 'G' (gauche), 'D' (droite)</instruction>
+            <instruction>    - Console : '@' (haut), '#' (bas), '$' (gauche), '%' (droite)</instruction>
+            <instruction>Exemple d'entrée : taille du labyrinthe, nombre de carottes, difficulté.</instruction>
+            <instruction>Exemple de sortie : labyrinthe avec le chemin de Gilbertonin et les carottes récupérées.</instruction>
+        </instructions>
+        <output>Une interface graphique (ou console) interactive affichant le labyrinthe, le chemin de Gilbertonin et les carottes récupérées.</output>
+        <exemple_de_deroulement>
+            <deroulement>L'utilisateur saisit la taille du labyrinthe (10x10), le nombre de carottes (5) et la difficulté (moyenne).</deroulement>
+            <deroulement>Le programme génère un labyrinthe aléatoire avec 5 carottes dispersées.</deroulement>
+            <deroulement>Le programme trouve le chemin le plus court pour récupérer toutes les carottes et s'échapper.</deroulement>
+            <deroulement>L'interface graphique (ou console) affiche le labyrinthe, le chemin de Gilbertonin et les carottes récupérées.</deroulement>
+            <deroulement>L'utilisateur utilise les touches « wtf » pour déplacer Gilbertonin : 'A', 'B', 'G', 'D' (interface graphique) ou '@', '#', '$', '%' (console).</deroulement>
+        </exemple_de_deroulement>
+        <extensions_facultatives>
+            <extension>Ajouter des obstacles ou des pièges dans le labyrinthe.</extension>
+            <extension>Ajouter des animations ou des effets visuels pour rendre le labyrinthe plus immersif.</extension>
+            <extension>Permettre à l'utilisateur de créer ses propres labyrinthes personnalisés.</extension>
+            <extension>Intégrer une fonctionnalité de partage des labyrinthes et des scores sur les réseaux sociaux.</extension>
+        </extensions_facultatives>
+    </challenge>
+</challenges>
