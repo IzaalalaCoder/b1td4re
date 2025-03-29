@@ -74,19 +74,19 @@ class Challenges(commands.Cog):
             description = informations["description"],
             color = self._get_random_color()
         )
-        e.add_field(name="Explications", value=informations["explication"])
-        e.add_field(name="Fonctionnement", value=informations["fonctionnement"])
-        e.add_field(name="Temps d'exécution", value=informations["temps_execution"])
+        e.add_field(name="Explications", value=informations["explication"], inline=False)
+        e.add_field(name="Fonctionnement", value=informations["fonctionnement"], inline=False)
+        e.add_field(name="Temps d'exécution", value=informations["temps_execution"], inline=False)
         if "objectifs" in informations:
-            e.add_field(name="La liste des objectifs", value=informations["objectifs"])
+            e.add_field(name="La liste des objectifs", value=informations["objectifs"], inline=False)
         if "criteres" in informations:
-            e.add_field(name="Critères de réussites", value=informations["criteres"])
-        if "exemple_de_deroulement" in informations:
-            e.add_field(name="Exemples de réalisations", value=informations["exemple_de_deroulement"])
+            e.add_field(name="Critères de réussites", value=informations["criteres"], inline=False)
         if "extensions_facultatives" in informations:
-            e.add_field(name="Extensions facultatives", value=informations["extensions_facultatives"])
+            e.add_field(name="Extensions facultatives", value=informations["extensions_facultatives"], inline=False)
         if "instructions" in informations:
-            e.add_field(name="Les instructions", value=informations["instructions"])
+            e.add_field(name="Les instructions", value=informations["instructions"], inline=False)
         if "output" in informations:
-            e.add_field(name="Sortie", value=informations["output"])
+            e.add_field(name="Sortie", value=informations["output"], inline=False)
+        if "exemple_de_deroulement" in informations:
+            e.add_field(name="Exemples de réalisations", value=informations["exemple_de_deroulement"], inline=False)
         return e
