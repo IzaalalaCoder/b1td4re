@@ -1,5 +1,6 @@
 /bot/__pycache__
 /bot/commands/__pycache__
+/bot/entities/__pycache__
 .env
 .idea
 /bot/assets/
