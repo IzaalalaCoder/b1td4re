@@ -10,8 +10,11 @@ class Game(commands.Cog):
     def get_all_members(self):
         return self._members
 
-    def search_member(self, name):
-        pass
+    def search_member(self, name, guild):
+        for member in self._members:
+            if member.get_member().name == name and member.get_is_play(guild):
+                return member
+        return None
 
     def index_of_member(self, member: discord.Member):
         for m in self._members:
@@ -25,7 +28,7 @@ class Game(commands.Cog):
         member = member or ctx.author
         guild = ctx.message.guild.id
         index = self.index_of_member(member)
-        if index == -1 and member != None:
+        if index == -1 and member is not None:
             self._members.append(Member(member))
             self._members[-1].set_is_play(True, guild)
         else:
@@ -39,7 +42,7 @@ class Game(commands.Cog):
         member = member or ctx.author
         guild = ctx.message.guild.id
         index = self.index_of_member(member)
-        if index != -1 and member != None:
+        if index != -1 and member is not None:
             m = self._members[index]
             if m.contain_guild(guild):
                 if m.get_is_play(guild):
@@ -54,7 +57,7 @@ class Game(commands.Cog):
         member = member or ctx.author
         guild = ctx.message.guild.id
         index = self.index_of_member(member)
-        if index != -1 and member != None:
+        if index != -1 and member is not None:
             m = self._members[index]
             if m.contain_guild(guild):
                 self._members.pop(index)
