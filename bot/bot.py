@@ -15,7 +15,6 @@ async def on_ready():
     print(f"Connecté en tant que {bot.user}")
     game = Game(bot)
     try:
-        await bot.add_cog(Greetings(bot))
         await bot.add_cog(game)
         await bot.add_cog(Challenges(bot, game))
     except Exception as e:
