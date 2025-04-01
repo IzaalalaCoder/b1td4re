@@ -6,129 +6,137 @@ import random
 import re
 
 class Challenges(commands.Cog):
-    def __init__(self, bot, game : Game):
-        self.bot = bot
+    def __init__(self, game : Game):
         self._game = game
         self._challenge = Challenge()
 
     @commands.command()
-    async def today(self, ctx, *, member: discord.Member = None):
+    async def today(self, ctx):
         """Add new members in list of members"""
-        guild = ctx.message.guild.id
-        if self._game.get_all_members()[self._game.index_of_member(member)].get_is_play(guild):
-            challenges = self._challenge.get_all_challenges_on_day()
-            if challenges:
-                for c in challenges:
-                    await ctx.send(embed=self._generate_embed_to_display_informations_challenge(c))
-            else:
-                await ctx.send(embed=self._generate_embed(
-                    discord.Color.red(),
-                    title="Pas de défi aujourd'hui 😔",
-                    description="Malheureusement, il n'y a pas de défi disponible pour le moment.\nRevenez demain pour de nouvelles aventures coding !"
-                ))
+        guild = ctx.guild.id
+        index = self._game.index_of_member(ctx.author)
+        if index != -1:
+            if self._game.get_all_members()[index].get_is_play(guild):
+                challenges = self._challenge.get_all_challenges_on_day()
+                if challenges:
+                    for c in challenges:
+                        await ctx.send(embed=self._generate_embed_to_display_information_challenge(c))
+                else:
+                    await ctx.send(embed=self._generate_embed(
+                        discord.Color.red(),
+                        title="Pas de défi aujourd'hui 😕",
+                        description="Malheureusement, il n'y a pas de défi disponible pour le moment.\nRevenez demain pour de nouvelles aventures coding !"
+                    ))
+        else:
+            await ctx.send(embed=discord.Embed(
+                color=discord.Color.red(),
+                title="Recherche du ou des défis du jour 😕",
+                description="Vous n'avez pas accès tant que vous vous y inscrivez pas."
+            ))
 
     @commands.command()
-    async def challenge(self, ctx, *index, member: discord.Member = None):
-        if len(index) != 1 or not self._is_numeric(index[0]):
+    async def challenge(self, ctx, index : int = 1):
+        guild = ctx.guild.id
+        index_member = self._game.index_of_member(ctx.author)
+        if index_member != -1:
+            if self._game.get_all_members()[index_member].get_is_play(guild):
+                challenge = self._challenge.get_one_challenge_on_day(index)
+                if challenge:
+                    await ctx.send(embed=self._generate_embed_to_display_information_challenge(challenge))
+                else:
+                    await ctx.send(embed=self._generate_embed(
+                        discord.Color.red(),
+                        title=f"Recherche du défi d'identifiant {index}  - Défi introuvable 😕",
+                        description=f"Le défi avec l'index {index} n'a pas été trouvé pour aujourd'hui."
+                    ))
+        else:
+            await ctx.send(embed=discord.Embed(
+                color=discord.Color.red(),
+                title=f"Recherche du défi d'identifiant {index} 😕",
+                description="Vous n'avez pas accès tant que vous vous y inscrivez pas."
+            ))
+
+    @commands.command()
+    async def publish(self, ctx, git_link : str, index : int = 1):
+        if not self._challenge.have_challenge_with_index(index):
             await ctx.send(embed=self._generate_embed(
                 discord.Color.red(),
-                title="Aucun challenge n'a été spécifié 😕",
-                description="La commande est la suivante : >challenge <int>"
+                title="Publication du défi du jour 😕",
+                description=f"Le défi d'identifiant {index} n'existe pas"
             ))
             return
-        guild = ctx.message.guild.id
-        if self._game.get_all_members()[self._game.index_of_member(member)].get_is_play(guild):
-            challenge = self._challenge.get_one_challenge_on_day(int(index[0]))
-            if challenge:
-                await ctx.send(embed=self._generate_embed_to_display_informations_challenge(challenge))
-            else:
-                await ctx.send(embed=self._generate_embed(
-                    discord.Color.red(),
-                    title="Défi introuvable 😕",
-                    description=f"Le défi avec l'index {index[0]} n'a pas été trouvé pour aujourd'hui."
-                ))
 
-    @commands.command()
-    async def publish(self, ctx, *arg, member: discord.Member = None):
-        m = self._game.get_all_members()[self._game.index_of_member(member)]
-        guild = ctx.message.guild.id
+        m = self._game.get_all_members()[self._game.index_of_member(ctx.author)]
+        guild = ctx.guild.id
         if m.get_is_play(guild):
-            if len(arg) != 2 or not self._is_numeric(arg[0]):
+            if not self._is_valid_url(git_link):
                 await ctx.send(embed=self._generate_embed(
                     discord.Color.red(),
-                    title="Aucun challenge n'a été spécifié 😕",
-                    description="La commande est la suivante : >publish <int> <link>"
-                ))
-                return
-            if not self._is_valid_url(arg[1]):
-                await ctx.send(embed=self._generate_embed(
-                    discord.Color.red(),
-                    title="Lien invalide 😕",
+                    title="Publication du défi du jour - Lien invalide 😕",
                     description="Le lien spécifié n'est pas valide. Assurez-vous qu'il s'agit d'un lien git amenant au repository."
                 ))
                 return
-            m.add_participate(int(arg[0]), guild)
+            m.add_participate(index, guild)
             await ctx.send(embed=self._generate_embed(
                 discord.Color.green(),
-                title="Le défi du jour a bien été réalisé 😊",
+                title="Publication du défi du jour 😊",
                 description=f"En attente des votes sur le défi publié par {m.get_member().mention}!"
             ))
         else:
             await ctx.send(embed=self._generate_embed(
                 discord.Color.red(),
-                title="Erreur du rôle 😕",
+                title="Publication du défi du jour - Erreur du rôle 😕",
                 description="Tu ne peux pas réaliser de défi car tu n'es pas inscrit dans la liste des participants."
             ))
             return
 
     @commands.command()
-    async def vote(self, ctx, *arg, member: discord.Member = None):
-        if len(arg) != 3:
-            await ctx.send(embed=discord.Embed(
-                color=discord.Color.red(),
-                title="Erreur 😕",
-                description="Soit aucun membre n'est mentionné, soit aucun défi du jour n'a été désigné ou soit aucun score n'a été donné. La commande est la suivante >vote <name> <id> <score>"
+    async def vote(self, ctx, member: discord.Member, score : int, index : int = 1):
+        if not self._challenge.have_challenge_with_index(index):
+            await ctx.send(embed=self._generate_embed(
+                discord.Color.red(),
+                title="Vote d'un défi réalisé par un joueur 😕",
+                description=f"Le défi d'identifiant {index} n'existe pas"
             ))
             return
 
-        if not self._is_numeric(arg[1]) or not self._is_numeric(arg[2]) or (self._is_numeric(arg[2]) and (int(arg[2]) < 1 or int(arg[2]) > 10)):
+        if score < 1 or score > 10 or index < 1:
             await ctx.send(embed=discord.Embed(
                 color=discord.Color.red(),
-                title="Erreur 😕",
-                description="Soit l'identifiant du défi n'est pas valide, soit la note n'est pas valide, soit la note n'est pas un nombre compris entre 1 et 10.."
+                title="Vote d'un défi réalisé par un joueur 😕",
+                description="Soit l'identifiant du défi n'est pas valide, soit la note n'est pas un nombre compris entre 1 et 10."
             ))
             return
 
-        guild = ctx.message.guild.id
-        author = self._game.get_all_members()[self._game.index_of_member(member)]
-        m = self._game.search_member(arg[0], guild)
+        guild = ctx.guild.id
+        m = self._game.search_member(member.name, guild)
 
         if not m:
             await ctx.send(embed=discord.Embed(
                 color=discord.Color.red(),
-                title="Erreur 😕",
+                title="Vote d'un défi réalisé par un joueur 😕",
                 description="Le membre n'est pas inscrit dans la liste des participants."
             ))
             return
-        if m == author:
+        if m.get_member() == ctx.author:
             await ctx.send(embed=discord.Embed(
                 color=discord.Color.red(),
-                title="Erreur 😕",
+                title="Vote d'un défi réalisé par un joueur 😕",
                 description="Vous ne pouvez pas noter votre propre défi."
             ))
             return
 
-        if m.has_realized(int(arg[1]), guild):
-            m.add_points(int(arg[2]))
+        if m.has_realized(index, guild):
+            m.add_points(score)
             await ctx.send(embed=discord.Embed(
                 color=discord.Color.green(),
-                title="Vote réussi ✅",
-                description=f'{m.get_member().mention} a reçu {arg[2]} points pour ce challenge par {author.get_member().mention}!'
+                title="Vote d'un défi réalisé par un joueur ✅",
+                description=f'{m.get_member().mention} a reçu {score} points pour ce challenge par {ctx.author.mention}!'
             ))
         else:
             await ctx.send(embed=discord.Embed(
                 color=discord.Color.red(),
-                title="Erreur 😕",
+                title="Vote d'un défi réalisé par un joueur 😕",
                 description="Le membre n'a pas réalisé le défi du jour."
             ))
 
@@ -162,14 +170,16 @@ class Challenges(commands.Cog):
     def _generate_embed_to_display_information_challenge(self, information):
         e = discord.Embed(
             title = information["titre"],
-            description = informations["description"],
+            description = information["description"],
             color = self._get_random_color()
         )
         e.add_field(name="Explications", value=information["explication"], inline=False)
         e.add_field(name="Fonctionnement", value=information["fonctionnement"], inline=False)
         e.add_field(name="Temps d'exécution", value=information["temps_execution"], inline=False)
         if "objectifs" in information:
-            e.add_field(name="La liste des objectifs", value=information.add_field(name="Critères de réussites", value=information["criteres"], inline=False))
+            e.add_field(name="La liste des objectifs", value=information["objectifs"], inline=False)
+        if "criteres" in information:
+            e.add_field(name="Critères de réussites", value=information["criteres"], inline=False)
         if "extensions_facultatives" in information:
             e.add_field(name="Extensions facultatives", value=information["extensions_facultatives"], inline=False)
         if "instructions" in information:
