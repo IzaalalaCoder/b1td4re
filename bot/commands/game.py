@@ -3,8 +3,7 @@ from discord.ext import commands
 from entities.member import Member
 
 class Game(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
+    def __init__(self):
         self._members = []
 
     def get_all_members(self):
@@ -23,45 +22,42 @@ class Game(commands.Cog):
         return -1
 
     @commands.command()
-    async def add(self, ctx, *, member: discord.Member = None):
+    async def add(self, ctx):
         """Add new members in list of members"""
-        member = member or ctx.author
-        guild = ctx.message.guild.id
+        member = ctx.author
+        guild = ctx.guild.id
         index = self.index_of_member(member)
-        if index == -1 and member is not None:
+        if index == -1:
             self._members.append(Member(member))
             self._members[-1].set_is_play(True, guild)
             embed = discord.Embed(
                 color=discord.Color.green(),
                 title="Ajout d'un membre 😊",
-                description=f'{member.name} est maintenant prêt à jouer dans {ctx.message.guild.name}'
+                description=f'{member.name} est maintenant prêt à jouer dans {ctx.guild.name}'
             )
             await ctx.send(embed=embed)
         else:
             m = self._members[index]
-            if not m.get_is_play(guild):
+            if not m.contain_guild(guild):
                 m.set_is_play(True, guild)
-                embed = discord.Embed(
-                    color=discord.Color.green(),
-                    title="Ajout d'un membre 😊",
-                    description=f'{member.name} est maintenant à nouveau prêt à jouer dans {ctx.message.guild.name}'
-                )
-                await ctx.send(embed=embed)
+                description = f'{member.name} est maintenant prêt à jouer dans {ctx.guild.name}'
+            elif not m.get_is_play(guild):
+                description = f'{member.name} est maintenant à nouveau prêt à jouer dans {ctx.guild.name}'
             else:
-                embed = discord.Embed(
-                    color=discord.Color.green(),
-                    title="Ajout d'un membre 😊",
-                    description=f'{member.name} joue déjà dans {ctx.message.guild.name}'
-                )
-                await ctx.send(embed=embed)
+                description = f'{member.name} joue déjà dans {ctx.guild.name}'
+            embed = discord.Embed(
+                color=discord.Color.green(),
+                title="Ajout d'un membre 😊",
+                description=description
+            )
+            await ctx.send(embed=embed)
 
     @commands.command()
-    async def rem(self, ctx, *, member: discord.Member = None):
+    async def rem(self, ctx):
         """Remove members of the game"""
-        member = member or ctx.author
-        guild = ctx.message.guild.id
-        index = self.index_of_member(member)
-        if index != -1 and member is not None:
+        guild = ctx.guild.id
+        index = self.index_of_member(ctx.author)
+        if index != -1:
             m = self._members[index]
             if m.contain_guild(guild):
                 if m.get_is_play(guild):
@@ -69,29 +65,36 @@ class Game(commands.Cog):
                     embed = discord.Embed(
                         color=discord.Color.green(),
                         title="Retrait d'un membre 😊",
-                        description=f'{member.name} se retire de la compétition dans {ctx.message.guild.name}'
+                        description=f'{ctx.author.name} se retire de la compétition dans {ctx.guild.name}'
                     )
                     await ctx.send(embed=embed)
                 else:
                     embed = discord.Embed(
                         color=discord.Color.green(),
                         title="Retrait d'un membre 😊",
-                        description=f'{member.name} s\'est déjà retiré de la compétition dans {ctx.message.guild.name}'
+                        description=f'{ctx.author.name} s\'est déjà retiré de la compétition dans {ctx.guild.name}'
                     )
                     await ctx.send(embed=embed)
             else:
                 embed = discord.Embed(
                     color=discord.Color.red(),
                     title="Retrait d'un membre 😕",
-                    description=f'{member.name} n\'a jamais joué dans {ctx.message.guild.name}'
+                    description=f'{ctx.author.name} n\'a jamais joué dans {ctx.guild.name}'
                 )
                 await ctx.send(embed=embed)
+        else:
+            embed = discord.Embed(
+                color=discord.Color.red(),
+                title="Retrait d'un membre 😕",
+                description=f'{ctx.author.name} n\'a jamais joué dans {ctx.guild.name}'
+            )
+            await ctx.send(embed=embed)
 
     @commands.command()
-    async def delete(self, ctx, *, member: discord.Member = None):
+    async def delete(self, ctx):
         """Remove members of the game"""
-        member = member or ctx.author
-        guild = ctx.message.guild.id
+        member = ctx.author
+        guild = ctx.guild.id
         index = self.index_of_member(member)
         if index != -1 and member is not None:
             m = self._members[index]
@@ -100,27 +103,27 @@ class Game(commands.Cog):
                 embed = discord.Embed(
                     color=discord.Color.green(),
                     title="Retrait définitif d'un membre 😊",
-                    description=f'{member.name} ne fait maintenant plus parti des joueurs dans {ctx.message.guild.name}'
+                    description=f'{member.name} ne fait maintenant plus parti des joueurs dans {ctx.guild.name}'
                 )
                 await ctx.send(embed=embed)
             else:
                 embed = discord.Embed(
                     color=discord.Color.red(),
                     title="Retrait définitif d'un membre 😕",
-                    description=f'{member.name} n\'a jamais joué dans {ctx.message.guild.name}'
+                    description=f'{member.name} n\'a jamais joué dans {ctx.guild.name}'
                 )
                 await ctx.send(embed=embed)
 
     @commands.command()
     async def rank(self, ctx):
         """Display rank"""
-        guild = ctx.message.guild.id
+        guild = ctx.guild.id
         members = self._members_by_guild(guild)
         if len(members) == 0:
             await ctx.send(embed=discord.Embed(
                 color=discord.Color.red(),
                 title="Affichage du classement 😕",
-                description=f"Aucun membre dans le classement dans {ctx.message.guild.name}"
+                description=f"Aucun membre dans le classement dans {ctx.guild.name}"
             ))
             return
         members = sorted(members, key=lambda m: m.get_points(), reverse=True)
@@ -138,13 +141,13 @@ class Game(commands.Cog):
     @commands.command()
     async def players(self, ctx):
         """Display the list of players who are participating"""
-        guild = ctx.message.guild.id
+        guild = ctx.guild.id
         members = self._members_by_guild(guild)
         if len(members) == 0:
             await ctx.send(embed=discord.Embed(
                 color=discord.Color.red(),
                 title="Affichage des joueurs 😕",
-                description=f"Aucun joueurs dans le classement dans {ctx.message.guild.name}"
+                description=f"Aucun joueurs dans le classement dans {ctx.guild.name}"
             ))
             return
         text = ""
@@ -193,13 +196,13 @@ class Game(commands.Cog):
                 await ctx.send(embed=discord.Embed(
                     color=discord.Color.red(),
                     title="Affichage du calendrier de défis 😕",
-                    description=f'{member.name} n\'a jamais joué dans {ctx.message.guild.name}'
+                    description=f'{member.name} n\'a jamais joué dans {ctx.guild.name}'
                 ))
         else:
             await ctx.send(embed=discord.Embed(
                 color=discord.Color.red(),
                 title="Affichage du calendrier de défis 😕",
-                description=f'{member.name} n\'a jamais joué dans {ctx.message.guild.name}'
+                description=f'{member.name} n\'a jamais joué dans {ctx.guild.name}'
             ))
 
     def _members_by_guild(self, guild):
