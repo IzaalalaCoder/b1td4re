@@ -13,19 +13,19 @@ class Help(commands.Cog):
 
         embed.add_field(
             name=">add",
-            value="Ajoute un membre à la liste des joueurs. Si aucun membre n'est spécifié, cela s'applique à l'utilisateur qui envoie la commande.",
+            value="Vous ajoute en tant que membre à la liste des joueurs.",
             inline=False
         )
 
         embed.add_field(
             name=">rem",
-            value="Retire un membre de la compétition. Si aucun membre n'est spécifié, cela s'applique à l'utilisateur qui envoie la commande.",
+            value="Vous retire de la compétition.",
             inline=False
         )
 
         embed.add_field(
             name=">delete",
-            value="Supprime un membre de la liste des joueurs. Cela les retire définitivement de la compétition.",
+            value="Vous retire définitivement des participants.",
             inline=False
         )
 
@@ -49,19 +49,19 @@ class Help(commands.Cog):
 
         embed.add_field(
             name=">today",
-            value="Affiche les défis du jour pour un membre. Si aucun membre n'est spécifié, cela s'applique à l'utilisateur qui envoie la commande.",
+            value="Affiche les défis du jour pour un membre.",
             inline=False
         )
 
         embed.add_field(
             name=">challenge [index:int]",
-            value="Affiche les détails du défi avec l'index spécifié pour un membre. Si aucun membre n'est spécifié, cela s'applique à l'utilisateur qui envoie la commande. L'index par défaut est 1.",
+            value="Affiche les détails du défi avec l'index spécifié pour un membre. L'index par défaut est 1.",
             inline=False
         )
 
         embed.add_field(
             name=">publish <git_link:str> [index:int]",
-            value="Publie un défi pour un joueur, associant un lien vers un repository Git. L'index par défaut est 1. Le lien doit être valide.",
+            value="Publie un défi pour un joueur, associant un lien vers un repository Git. L'index par défaut est 1. Le lien doit être valide et doit être celui d'un dépot git.",
             inline=False
         )
 
@@ -71,6 +71,6 @@ class Help(commands.Cog):
             inline=False
         )
 
-        embed.set_footer(text="Utilisez >help pour afficher cette liste.")
+        embed.set_footer(text="Utilisez >helps pour afficher cette liste.")
         await ctx.send(embed=embed)
 
