@@ -13,7 +13,9 @@ class Member:
         return guild in self._guilds_play
 
     def get_is_play(self, guild):
-        return True if self._guilds_play[guild] else False
+        if guild in self._guilds_play:
+            return self._guilds_play[guild]
+        return False
 
     def set_is_play(self, playing, guild):
         self._guilds_play[guild] = playing
