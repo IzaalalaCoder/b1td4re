@@ -152,7 +152,7 @@ Le joueur commence avec un champ de jeu vide et doit cliquer sur une case.
 <extension>Ajouter des animations à l'autoportrait.</extension>
 </extensions_facultatives>
 </challenge>
-<challenge jour="18" nombre="1">
+<challenge jour="1" nombre="1">
 <titre>Emoji Translate</titre>
 <temps_execution>1 heure</temps_execution>
 <explication>Créez un programme qui prend une phrase en entrée et remplace chaque lettre de l'alphabet (en majuscule et minuscule) par un emoji spécifique. Les espaces et la ponctuation doivent rester inchangés !</explication>
@@ -434,7 +434,7 @@ Le joueur commence avec un champ de jeu vide et doit cliquer sur une case.
 <extension>Ajouter des fonctionnalités pour aider l'utilisateur (par exemple, des indices, la possibilité d'annuler des mouvements).</extension>
 </extensions_facultatives>
 </challenge>
-<challenge jour="1" nombre="1">
+<challenge jour="18" nombre="1">
 <titre>Le Lapin de Pâques et les Mots Croisés</titre>
 <temps_execution>1 heure</temps_execution>
 <explication>Créez un générateur de mots croisés sur le thème de Pâques. Le programme doit générer une grille de mots croisés avec des définitions liées à Pâques et des mots à trouver. Le joueur devra résoudre les mots croisés pour découvrir un message caché.</explication>
