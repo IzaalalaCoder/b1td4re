@@ -3,6 +3,47 @@ import os.path
 import xml.etree.ElementTree as ET
 
 class Challenge():
+
+    def have_challenge_with_index(self, index):
+        try:
+            root = self._get_correct_file_on_today()
+            if root is None:
+                return False
+            day = d.date.today().day
+            challenge = root.getroot().find(f".//challenge[@jour='{day}'][@nombre='{index}']")
+            return challenge is not None
+        except Exception:
+            return False
+
+    def get_all_challenges_on_day(self):
+        root = self._get_correct_file_on_today()
+        if root is not None:
+            root = root.getroot()
+            day = d.date.today().day
+            challenges_str = []
+            challenges = root.findall(f".//challenge[@jour='{day}']")
+            if challenges:
+                for c in challenges:
+                    challenges_str.append(self._read_challenge(c))
+                return challenges_str
+            else:
+                return []
+        else:
+            return []
+
+    def get_one_challenge_on_day(self, index : int):
+        root = self._get_correct_file_on_today()
+        if root is not None:
+            root = root.getroot()
+            day = d.date.today().day
+            challenge = root.find(f".//challenge[@jour='{day}'][@nombre='{index}']")
+            if challenge is not None:
+                return self._read_challenge(challenge)
+            else:
+                return {}
+        else:
+            return {}
+
     def _get_correct_file_on_today(self):
         date = d.date.today()
         month = date.strftime("%B").lower()
@@ -49,32 +90,3 @@ class Challenge():
             informations_challenge["output"] = challenge.find("output").text
 
         return informations_challenge
-
-    def get_all_challenges_on_day(self):
-        root = self._get_correct_file_on_today()
-        if root is not None:
-            root = root.getroot()
-            day = d.date.today().day
-            challenges_str = []
-            challenges = root.findall(f".//challenge[@jour='{day}']")
-            if challenges:
-                for c in challenges:
-                    challenges_str.append(self._read_challenge(c))
-                return challenges_str
-            else:
-                return []
-        else:
-            return []
-
-    def get_one_challenge_on_day(self, index : int):
-        root = self._get_correct_file_on_today()
-        if root is not None:
-            root = root.getroot()
-            day = d.date.today().day
-            challenge = root.find(f".//challenge[@jour='{day}'][@index='{index}']")
-            if challenge is not None:
-                return self._read_challenge(challenge)
-            else:
-                return {}
-        else:
-            return {}
